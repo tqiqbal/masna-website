@@ -527,9 +527,113 @@
             text-align: center;
             opacity: 0.8;
         }
+                /* Mobile Navigation Styles */
+                .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--secondary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile Navigation Styles - Updated */
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
 
         /* Responsive */
         @media (max-width: 992px) {
+            .navbar .container {
+                position: relative;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
             .hero-content {
                 width: 100%;
                 text-align: center;
@@ -624,18 +728,40 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
+        <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">Masna<span> AI</span></a>
+
+            <!-- Desktop Navigation -->
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#industries">Industries</a></li>
-                <li><a href="index.html#enterprise">Enterprise</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#enterprise">Enterprise</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#enterprise">Enterprise</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1059,6 +1185,34 @@
     <script>
         // JavaScript for FAQ accordion functionality
         document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.overlay');
+
+        menuToggle.addEventListener('click', function () {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', function () {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
             const faqItems = document.querySelectorAll('.faq-item');
             
             faqItems.forEach(item => {

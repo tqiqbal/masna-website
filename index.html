@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -36,7 +37,12 @@
             background-color: var(--light);
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: var(--spacing-md);
@@ -184,13 +190,13 @@
             width: 45%;
             z-index: 1;
         }
-        
+
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
-        
+
         @media (max-width: 480px) {
             .hero-buttons {
                 flex-direction: column;
@@ -279,7 +285,8 @@
             color: var(--text-light);
         }
 
-        .enterprise h2, .enterprise h3 {
+        .enterprise h2,
+        .enterprise h3 {
             color: var(--text-light);
         }
 
@@ -368,8 +375,114 @@
             opacity: 0.8;
         }
 
-        /* Responsive */
+        /* Mobile Navigation Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--secondary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile Navigation Styles - Updated */
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+
         @media (max-width: 992px) {
+            .navbar .container {
+                position: relative;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
             .hero-content {
                 width: 100%;
                 text-align: center;
@@ -382,7 +495,7 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .features-grid,
             .industry-cards,
             .enterprise-grid {
@@ -413,29 +526,29 @@
             .section {
                 padding: var(--spacing-lg) 0;
             }
-            
+
             .features-grid,
             .industry-cards,
             .enterprise-grid {
                 grid-template-columns: 1fr;
                 gap: var(--spacing-md);
             }
-            
+
             .footer-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
         }
-        
+
         @media (max-width: 480px) {
             .hero {
                 min-height: 60vh;
             }
-            
+
             .hero h1 {
                 font-size: 1.75rem;
             }
-            
+
             .btn {
                 padding: 10px 18px;
                 font-size: 0.9rem;
@@ -443,43 +556,67 @@
                 width: 100%;
                 margin-bottom: var(--spacing-md);
             }
-            
+
             .btn-outline {
                 margin-left: 0 !important;
             }
-            
-            .feature-card, 
-            .industry-card, 
+
+            .feature-card,
+            .industry-card,
             .enterprise-card {
                 padding: var(--spacing-md);
             }
-            
+
             .industry-image {
                 height: 160px;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">Masna<span> AI</span></a>
+            <a href="index.html" class="logo">Masna<span> AI</span></a>
+
+            <!-- Desktop Navigation -->
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="#industries">Industries</a></li>
                 <li><a href="#enterprise">Enterprise</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#enterprise">Enterprise</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Leading Agentic AI Solutions in the Middle East</h1>
-                <p>Masna AI empowers businesses with intelligent agentic AI solutions that transform operations, enhance customer experiences, and drive growth.</p>
+                <p>Masna AI empowers businesses with intelligent agentic AI solutions that transform operations, enhance
+                    customer experiences, and drive growth.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn">Get Started</a>
                     <a href="#industries" class="btn btn-outline" style="margin-left: 10px;">Explore Solutions</a>
@@ -545,7 +682,8 @@
                     <div class="industry-content">
                         <h3>Healthcare</h3>
                         <p>One AI Employee to Unlock Superhuman Efficiency</p>
-                        <p>Improve patient experience and tackle the shortage of healthcare workers with intelligent automation and support.</p>
+                        <p>Improve patient experience and tackle the shortage of healthcare workers with intelligent
+                            automation and support.</p>
                         <a href="health-care.html" class="btn">Learn More</a>
                     </div>
                 </div>
@@ -554,7 +692,8 @@
                     <div class="industry-content">
                         <h3>Employee Experience</h3>
                         <p>Make Every Part of the Employee Experience Delightful</p>
-                        <p>From onboarding to retention, elevate every step of employee experience with Agentic AI solutions.</p>
+                        <p>From onboarding to retention, elevate every step of employee experience with Agentic AI
+                            solutions.</p>
                         <a href="employee-experience.html" class="btn">Learn More</a>
                     </div>
                 </div>
@@ -563,7 +702,8 @@
                     <div class="industry-content">
                         <h3>Construction</h3>
                         <p>AI quoting for wholesale and distribution and manufactures</p>
-                        <p>Streamline bidding processes, optimize resource allocation, and improve project management with intelligent AI solutions.</p>
+                        <p>Streamline bidding processes, optimize resource allocation, and improve project management
+                            with intelligent AI solutions.</p>
                         <a href="construction.html" class="btn">Learn More</a>
                     </div>
                 </div>
@@ -581,11 +721,13 @@
             <div class="enterprise-grid">
                 <div class="enterprise-card">
                     <h3>Custom Model Fine-tuning</h3>
-                    <p>Train AI models on your specific business data for superior performance and relevance to your unique challenges.</p>
+                    <p>Train AI models on your specific business data for superior performance and relevance to your
+                        unique challenges.</p>
                 </div>
                 <div class="enterprise-card">
                     <h3>Secure Deployment</h3>
-                    <p>Implement AI solutions with enterprise-grade security protocols and compliance with regional regulations.</p>
+                    <p>Implement AI solutions with enterprise-grade security protocols and compliance with regional
+                        regulations.</p>
                 </div>
                 <div class="enterprise-card">
                     <h3>Integration Expertise</h3>
@@ -603,7 +745,8 @@
     <section class="section cta">
         <div class="container">
             <h2>Ready to Transform Your Business with AI?</h2>
-            <p>Schedule a consultation with our AI experts to explore how Masna AI can drive innovation in your organization.</p>
+            <p>Schedule a consultation with our AI experts to explore how Masna AI can drive innovation in your
+                organization.</p>
             <a href="#contact" class="btn">Contact Us Today</a>
         </div>
     </section>
@@ -615,15 +758,17 @@
                 <h2>Get in Touch</h2>
                 <p>Let's discuss how Masna AI can help your business thrive</p>
             </div>
-            <div style="max-width: 600px; margin: 0 auto; padding: 40px; text-align: center; background-color: white; border-radius: var(--border-radius); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
+            <div
+                style="max-width: 600px; margin: 0 auto; padding: 40px; text-align: center; background-color: white; border-radius: var(--border-radius); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
                 <div style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;">📧</div>
                 <h3 style="margin-bottom: 10px;">Email Us</h3>
-                <p style="font-size: 1.2rem; margin-bottom: 30px;">                <a href="mailto:contact@masna.ai">contact@masna.ai</a></p>
-                
+                <p style="font-size: 1.2rem; margin-bottom: 30px;"> <a
+                        href="mailto:contact@masna.ai">contact@masna.ai</a></p>
+
                 <div style="font-size: 4rem; color: var(--primary); margin-bottom: 20px; margin-top: 40px;">📞</div>
                 <h3 style="margin-bottom: 10px;">Call Us</h3>
                 <p style="font-size: 1.2rem; margin-bottom: 30px;">+966 53890 3547</p>
-                
+
                 <a href="mailto:contact@masna.ai" class="btn" style="margin-top: 20px;">Contact Us Today</a>
             </div>
         </div>
@@ -635,7 +780,8 @@
             <div class="footer-grid">
                 <div>
                     <h3>Masna AI</h3>
-                    <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through intelligent automation.</p>
+                    <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through
+                        intelligent automation.</p>
                 </div>
                 <div>
                     <h3>Solutions</h3>
@@ -671,4 +817,37 @@
         </div>
     </footer>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.overlay');
+
+        menuToggle.addEventListener('click', function () {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', function () {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    });
+</script>
+
 </html>
