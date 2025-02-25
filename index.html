@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Masna AI - Leading Agentic AI Solutions in the Middle East</title>
     <link rel="icon" type="image/png" href="assets/logo.png">
     <style>
@@ -183,6 +183,19 @@
             transform: translateY(-50%);
             width: 45%;
             z-index: 1;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
         }
 
         /* Features */
@@ -369,6 +382,12 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
+            
+            .features-grid,
+            .industry-cards,
+            .enterprise-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -380,14 +399,63 @@
             .nav-links {
                 justify-content: center;
                 width: 100%;
+                flex-wrap: wrap;
             }
 
             .hero h1 {
                 font-size: 2rem;
             }
 
+            .hero p {
+                font-size: 1rem;
+            }
+
             .section {
                 padding: var(--spacing-lg) 0;
+            }
+            
+            .features-grid,
+            .industry-cards,
+            .enterprise-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 60vh;
+            }
+            
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+                display: block;
+                width: 100%;
+                margin-bottom: var(--spacing-md);
+            }
+            
+            .btn-outline {
+                margin-left: 0 !important;
+            }
+            
+            .feature-card, 
+            .industry-card, 
+            .enterprise-card {
+                padding: var(--spacing-md);
+            }
+            
+            .industry-image {
+                height: 160px;
             }
         }
     </style>
@@ -412,12 +480,14 @@
             <div class="hero-content">
                 <h1>Leading Agentic AI Solutions in the Middle East</h1>
                 <p>Masna AI empowers businesses with intelligent agentic AI solutions that transform operations, enhance customer experiences, and drive growth.</p>
-                <a href="#contact" class="btn">Get Started</a>
-                <a href="#industries" class="btn btn-outline" style="margin-left: 10px;">Explore Solutions</a>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Get Started</a>
+                    <a href="#industries" class="btn btn-outline" style="margin-left: 10px;">Explore Solutions</a>
+                </div>
             </div>
         </div>
         <div class="hero-image">
-            <img src="/assets/hero.svg" alt="Masna AI Technology" />
+            <img src="assets/hero.svg" alt="Masna AI Technology" />
         </div>
     </section>
 
@@ -462,7 +532,7 @@
             </div>
             <div class="industry-cards">
                 <div class="industry-card">
-                    <div class="industry-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="industry-image" style="background-image: url('assets/sales.png');"></div>
                     <div class="industry-content">
                         <h3>Sales and Marketing</h3>
                         <p>Unlock revenue potential & sales efficiency with Masna</p>
@@ -471,7 +541,7 @@
                     </div>
                 </div>
                 <div class="industry-card">
-                    <div class="industry-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="industry-image" style="background-image: url('assets/healthcare.png');"></div>
                     <div class="industry-content">
                         <h3>Healthcare</h3>
                         <p>One AI Employee to Unlock Superhuman Efficiency</p>
@@ -480,7 +550,7 @@
                     </div>
                 </div>
                 <div class="industry-card">
-                    <div class="industry-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="industry-image" style="background-image: url('assets/employee.png');"></div>
                     <div class="industry-content">
                         <h3>Employee Experience</h3>
                         <p>Make Every Part of the Employee Experience Delightful</p>
@@ -489,7 +559,7 @@
                     </div>
                 </div>
                 <div class="industry-card">
-                    <div class="industry-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="industry-image" style="background-image: url('assets/construction.png');"></div>
                     <div class="industry-content">
                         <h3>Construction</h3>
                         <p>AI quoting for wholesale and distribution and manufactures</p>
@@ -548,7 +618,7 @@
             <div style="max-width: 600px; margin: 0 auto; padding: 40px; text-align: center; background-color: white; border-radius: var(--border-radius); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
                 <div style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;">📧</div>
                 <h3 style="margin-bottom: 10px;">Email Us</h3>
-                <p style="font-size: 1.2rem; margin-bottom: 30px;"><a href="mailto:contact@masna.ai">contact@masna.ai</a></p>
+                <p style="font-size: 1.2rem; margin-bottom: 30px;">                <a href="mailto:contact@masna.ai">contact@masna.ai</a></p>
                 
                 <div style="font-size: 4rem; color: var(--primary); margin-bottom: 20px; margin-top: 40px;">📞</div>
                 <h3 style="margin-bottom: 10px;">Call Us</h3>
