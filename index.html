@@ -10,11 +10,12 @@
         /* Base Styles */
         :root {
             --primary: #0066ff;
+            --primary-light: #4d94ff;
+            --primary-dark: #0052cc;
             --secondary: #001233;
             --accent: #ff6b00;
             --light: #f5f7fa;
             --dark: #001233;
-            --success: #00c853;
             --text-dark: #333;
             --text-light: #f5f7fa;
             --spacing-sm: 8px;
@@ -37,12 +38,7 @@
             background-color: var(--light);
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: var(--spacing-md);
@@ -145,12 +141,13 @@
 
         /* Hero Section */
         .hero {
-            min-height: 80vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
-            background-color: var(--light);
+            background-color: var(--primary);
             position: relative;
             overflow: hidden;
+            color: white;
         }
 
         .hero::before {
@@ -160,7 +157,7 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(255, 107, 0, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.9) 0%, rgba(0, 18, 51, 0.8) 100%);
             z-index: 0;
         }
 
@@ -173,13 +170,13 @@
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: var(--spacing-md);
-            color: var(--secondary);
+            color: white;
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: var(--spacing-lg);
-            color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .hero-image {
@@ -194,19 +191,49 @@
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
 
-        @media (max-width: 480px) {
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
+        .hero .btn {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .hero .btn:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .hero .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .hero .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
         }
 
         /* Features */
         .features {
             background-color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .features-grid {
@@ -222,6 +249,7 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             background-color: white;
+            border-top: 4px solid var(--primary);
         }
 
         .feature-card:hover {
@@ -237,7 +265,16 @@
 
         /* Industries */
         .industries {
-            background-color: var(--light);
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .industries .section-header h2 {
+            color: white;
+        }
+
+        .industries .section-header p {
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .industry-cards {
@@ -253,6 +290,7 @@
             overflow: hidden;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            color: var(--text-dark);
         }
 
         .industry-card:hover {
@@ -271,7 +309,7 @@
         }
 
         .industry-card h3 {
-            color: var(--secondary);
+            color: var(--primary);
             margin-bottom: var(--spacing-sm);
         }
 
@@ -279,15 +317,13 @@
             margin-bottom: var(--spacing-md);
         }
 
-        /* Enterprise Solutions */
-        .enterprise {
-            background-color: var(--secondary);
-            color: var(--text-light);
+        .industry-card .btn {
+            background-color: var(--primary);
         }
 
-        .enterprise h2,
-        .enterprise h3 {
-            color: var(--text-light);
+        /* Enterprise Solutions */
+        .enterprise {
+            background-color: white;
         }
 
         .enterprise-grid {
@@ -298,15 +334,109 @@
         }
 
         .enterprise-card {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--light);
             border-radius: var(--border-radius);
             padding: var(--spacing-lg);
             transition: all 0.3s ease;
+            border-bottom: 4px solid var(--primary);
         }
 
         .enterprise-card:hover {
-            background-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .enterprise-card h3 {
+            color: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: var(--secondary);
+            color: white;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--light);
+        }
+
+        .testimonial-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            color: var(--primary-light);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: var(--spacing-md);
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0;
+        }
+
+        .author-info p {
+            color: var(--text-dark);
+            opacity: 0.7;
         }
 
         /* CTA */
@@ -318,6 +448,14 @@
 
         .cta h2 {
             color: white;
+        }
+
+        .cta p {
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta .btn {
@@ -364,7 +502,7 @@
 
         .footer-links a:hover {
             opacity: 1;
-            color: var(--accent);
+            color: var(--primary);
         }
 
         .copyright {
@@ -373,6 +511,34 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
             opacity: 0.8;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .social-icon i {
+            color: white;
+            font-size: 1.2rem;
         }
 
         /* Mobile Navigation Styles */
@@ -384,16 +550,13 @@
             height: 21px;
             cursor: pointer;
             z-index: 1001;
-            position: absolute;
-            top: 20px;
-            right: 20px;
         }
 
         .mobile-menu-toggle span {
             display: block;
             height: 3px;
             width: 100%;
-            background-color: var(--secondary);
+            background-color: var(--primary);
             border-radius: 3px;
             transition: all 0.3s ease;
         }
@@ -469,7 +632,6 @@
             opacity: 1;
         }
 
-
         @media (max-width: 992px) {
             .navbar .container {
                 position: relative;
@@ -504,17 +666,6 @@
         }
 
         @media (max-width: 768px) {
-            .navbar .container {
-                flex-direction: column;
-                gap: var(--spacing-md);
-            }
-
-            .nav-links {
-                justify-content: center;
-                width: 100%;
-                flex-wrap: wrap;
-            }
-
             .hero h1 {
                 font-size: 2rem;
             }
@@ -529,7 +680,8 @@
 
             .features-grid,
             .industry-cards,
-            .enterprise-grid {
+            .enterprise-grid,
+            .stats-grid {
                 grid-template-columns: 1fr;
                 gap: var(--spacing-md);
             }
@@ -538,27 +690,28 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+            
+            .social-icons {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
             .hero {
-                min-height: 60vh;
+                min-height: 70vh;
             }
 
             .hero h1 {
                 font-size: 1.75rem;
             }
 
-            .btn {
-                padding: 10px 18px;
-                font-size: 0.9rem;
-                display: block;
+            .hero-buttons {
+                flex-direction: column;
                 width: 100%;
-                margin-bottom: var(--spacing-md);
             }
 
-            .btn-outline {
-                margin-left: 0 !important;
+            .btn {
+                width: 100%;
             }
 
             .feature-card,
@@ -570,8 +723,14 @@
             .industry-image {
                 height: 160px;
             }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
         }
     </style>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -585,7 +744,8 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#industries">Industries</a></li>
                 <li><a href="#enterprise">Enterprise</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
 
             <!-- Mobile Menu Toggle Button -->
@@ -603,7 +763,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="#industries">Industries</a></li>
             <li><a href="#enterprise">Enterprise</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
 
@@ -615,11 +776,10 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Leading Agentic AI Solutions in the Middle East</h1>
-                <p>Masna AI empowers businesses with intelligent agentic AI solutions that transform operations, enhance
-                    customer experiences, and drive growth.</p>
+                <p>Masna AI empowers enterprises with intelligent agentic solutions that transform operations, enhance customer experiences, and drive sustainable growth.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn">Get Started</a>
-                    <a href="#industries" class="btn btn-outline" style="margin-left: 10px;">Explore Solutions</a>
+                    <a href="contact.html" class="btn">Get Started</a>
+                    <a href="#industries" class="btn btn-outline">Explore Solutions</a>
                 </div>
             </div>
         </div>
@@ -631,31 +791,31 @@
     <!-- Features Section -->
     <section class="section features">
         <div class="container">
-            <div class="text-center">
+            <div class="section-header">
                 <h2>Why Choose Masna AI?</h2>
-                <p>Our agentic AI solutions deliver tangible business outcomes with cutting-edge technology</p>
+                <p>Our agentic AI solutions deliver measurable business outcomes with cutting-edge technology</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
+                    <div class="feature-icon"><i class="fas fa-robot"></i></div>
                     <h3>Advanced AI Agents</h3>
                     <p>Purpose-built AI agents that work autonomously to solve complex business challenges</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Rapid Deployment</h3>
-                    <p>Get up and running quickly with our streamlined implementation process</p>
+                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Rapid Implementation</h3>
+                    <p>Get up and running quickly with our streamlined deployment process</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>Enterprise Security</h3>
                     <p>Industry-leading security protocols to keep your data and AI systems protected</p>
                 </div>
-                <!-- <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
                     <h3>Measurable Results</h3>
                     <p>Clear metrics and KPIs to track the impact of AI on your business outcomes</p>
-                </div> -->
+                </div>
             </div>
         </div>
     </section>
@@ -663,49 +823,70 @@
     <!-- Industries Section -->
     <section id="industries" class="section industries">
         <div class="container">
-            <div class="text-center">
+            <div class="section-header">
                 <h2>Industry Solutions</h2>
                 <p>Tailored AI solutions for diverse industry challenges</p>
             </div>
             <div class="industry-cards">
-                <!-- <div class="industry-card">
-                    <div class="industry-image" style="background-image: url('assets/sales.png');"></div>
+                <div class="industry-card">
+                    <div class="industry-image" style="background-image: url('assets/sales.jpg');"></div>
                     <div class="industry-content">
                         <h3>Sales and Marketing</h3>
                         <p>Unlock revenue potential & sales efficiency with Masna</p>
                         <p>Our AI agents automate prospecting, enhance customer interactions, and optimize marketing campaigns for maximum ROI.</p>
-                        <a href="#" class="btn">Learn More</a>
+                        <a href="sales-marketing.html" class="btn">Learn More</a>
                     </div>
-                </div> -->
+                </div>
                 <div class="industry-card">
-                    <div class="industry-image" style="background-image: url('assets/healthcare.png');"></div>
+                    <div class="industry-image" style="background-image: url('assets/healthcare.jpg');"></div>
                     <div class="industry-content">
                         <h3>Healthcare</h3>
                         <p>One AI Employee to Unlock Superhuman Efficiency</p>
-                        <p>Improve patient experience and tackle the shortage of healthcare workers with intelligent
-                            automation and support.</p>
+                        <p>Improve patient experience and tackle the shortage of healthcare workers with intelligent automation and support.</p>
                         <a href="health-care.html" class="btn">Learn More</a>
                     </div>
                 </div>
                 <div class="industry-card">
-                    <div class="industry-image" style="background-image: url('assets/employee.png');"></div>
+                    <div class="industry-image" style="background-image: url('assets/employee.jpg');"></div>
                     <div class="industry-content">
                         <h3>Employee Experience</h3>
                         <p>Make Every Part of the Employee Experience Delightful</p>
-                        <p>From onboarding to retention, elevate every step of employee experience with Agentic AI
-                            solutions.</p>
+                        <p>From onboarding to retention, elevate every step of employee experience with Agentic AI solutions.</p>
                         <a href="employee-experience.html" class="btn">Learn More</a>
                     </div>
                 </div>
                 <div class="industry-card">
-                    <div class="industry-image" style="background-image: url('assets/construction.png');"></div>
+                    <div class="industry-image" style="background-image: url('assets/construction.jpg');"></div>
                     <div class="industry-content">
                         <h3>Construction</h3>
                         <p>AI quoting for wholesale and distribution and manufactures</p>
-                        <p>Streamline bidding processes, optimize resource allocation, and improve project management
-                            with intelligent AI solutions.</p>
+                        <p>Streamline bidding processes, optimize resource allocation, and improve project management with intelligent AI solutions.</p>
                         <a href="construction.html" class="btn">Learn More</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Reduction in Process Time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">60+</div>
+                    <div class="stat-label">Enterprise Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">93%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Average Cost Savings</div>
                 </div>
             </div>
         </div>
@@ -714,29 +895,51 @@
     <!-- Enterprise Section -->
     <section id="enterprise" class="section enterprise">
         <div class="container">
-            <div class="text-center">
+            <div class="section-header">
                 <h2>Enterprise AI Adoption</h2>
                 <p>Empowering enterprises with secure, customized AI deployment</p>
             </div>
             <div class="enterprise-grid">
                 <div class="enterprise-card">
                     <h3>Custom Model Fine-tuning</h3>
-                    <p>Train AI models on your specific business data for superior performance and relevance to your
-                        unique challenges.</p>
+                    <p>Train AI models on your specific business data for superior performance and relevance to your unique challenges.</p>
                 </div>
                 <div class="enterprise-card">
                     <h3>Secure Deployment</h3>
-                    <p>Implement AI solutions with enterprise-grade security protocols and compliance with regional
-                        regulations.</p>
+                    <p>Implement AI solutions with enterprise-grade security protocols and compliance with regional regulations.</p>
                 </div>
                 <div class="enterprise-card">
                     <h3>Integration Expertise</h3>
                     <p>Seamlessly connect AI agents with your existing systems and workflows for maximum efficiency.</p>
                 </div>
-                <!-- <div class="enterprise-card">
+                <div class="enterprise-card">
                     <h3>Continuous Optimization</h3>
                     <p>Ongoing support and model refinement to ensure your AI solutions evolve with your business needs.</p>
-                </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <p>Hear from organizations that have transformed their operations with Masna AI</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    Masna AI has revolutionized how we handle customer service. Their agentic solutions have reduced response times by 70% while improving customer satisfaction scores. The implementation was seamless, and the team's expertise in fine-tuning the model to our specific needs exceeded our expectations.
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-image">
+                        <img src="assets/testimonial-avatar.jpg" alt="Ahmed Al Rashidi">
+                    </div>
+                    <div class="author-info">
+                        <h4>Ahmed Al Rashidi</h4>
+                        <p>CTO, Gulf Technologies</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -745,32 +948,8 @@
     <section class="section cta">
         <div class="container">
             <h2>Ready to Transform Your Business with AI?</h2>
-            <p>Schedule a consultation with our AI experts to explore how Masna AI can drive innovation in your
-                organization.</p>
-            <a href="#contact" class="btn">Contact Us Today</a>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="text-center">
-                <h2>Get in Touch</h2>
-                <p>Let's discuss how Masna AI can help your business thrive</p>
-            </div>
-            <div
-                style="max-width: 600px; margin: 0 auto; padding: 40px; text-align: center; background-color: white; border-radius: var(--border-radius); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
-                <div style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;">📧</div>
-                <h3 style="margin-bottom: 10px;">Email Us</h3>
-                <p style="font-size: 1.2rem; margin-bottom: 30px;"> <a
-                        href="mailto:contact@masna.ai">contact@masna.ai</a></p>
-
-                <div style="font-size: 4rem; color: var(--primary); margin-bottom: 20px; margin-top: 40px;">📞</div>
-                <h3 style="margin-bottom: 10px;">Call Us</h3>
-                <p style="font-size: 1.2rem; margin-bottom: 30px;">+966 53890 3547</p>
-
-                <a href="mailto:contact@masna.ai" class="btn" style="margin-top: 20px;">Contact Us Today</a>
-            </div>
+            <p>Schedule a consultation with our AI experts to explore how Masna AI can drive innovation in your organization.</p>
+            <a href="contact.html" class="btn">Contact Us Today</a>
         </div>
     </section>
 
@@ -780,34 +959,39 @@
             <div class="footer-grid">
                 <div>
                     <h3>Masna AI</h3>
-                    <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through
-                        intelligent automation.</p>
+                    <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through intelligent automation.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 <div>
                     <h3>Solutions</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Sales & Marketing</a></li>
-                        <li><a href="#">Healthcare</a></li>
-                        <li><a href="#">Employee Experience</a></li>
-                        <li><a href="#">Construction</a></li>
+                        <li><a href="sales-marketing.html">Sales & Marketing</a></li>
+                        <li><a href="health-care.html">Healthcare</a></li>
+                        <li><a href="employee-experience.html">Employee Experience</a></li>
+                        <li><a href="construction.html">Construction</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3>Enterprise</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Model Fine-tuning</a></li>
-                        <li><a href="#">Secure Deployment</a></li>
-                        <li><a href="#">Integration</a></li>
-                        <li><a href="#">Consulting</a></li>
+                        <li><a href="#enterprise">Model Fine-tuning</a></li>
+                        <li><a href="#enterprise">Secure Deployment</a></li>
+                        <li><a href="#enterprise">Integration</a></li>
+                        <li><a href="#enterprise">Consulting</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3>Connect</h3>
+                    <h3>Company</h3>
                     <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -816,38 +1000,38 @@
             </div>
         </div>
     </footer>
-</body>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const menuToggle = document.querySelector('.mobile-menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const overlay = document.querySelector('.overlay');
 
-        menuToggle.addEventListener('click', function () {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        });
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.overlay');
 
-        overlay.addEventListener('click', function () {
-            menuToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+            menuToggle.addEventListener('click', function () {
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
 
-        // Close mobile menu when clicking on a link
-        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function () {
+            overlay.addEventListener('click', function () {
                 menuToggle.classList.remove('active');
                 mobileMenu.classList.remove('active');
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
             });
-        });
-    });
-</script>
 
+            // Close mobile menu when clicking on a link
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    menuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        });
+    </script>
+</body>
 </html>

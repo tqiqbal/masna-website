@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Masna AI - Sales and Marketing Solutions</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <style>
+        /* Base Styles */
+        :root {
+    <!-- Custom colors -->
+            --light-purple: #bbabe9;
+            --light-green: #aedbbe;
+            --light-blue: #8ac5ec;
+            --light-orange: #f1dba6;
+            --accent: #ff6b00;
+            --light: #f5f7fa;
+            --dark: #001233;
+            --success: #00c853;
+            --text-dark: #333;
+            --text-light: #f5f7fa;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 32px;
+            --spacing-xl: 64px;
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: var(--spacing-md) 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-md);
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--light-orange);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(241, 219, 166, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            z-index: 1;
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: white;
+            padding: var(--spacing-lg) 0;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Use Cases Section */
+        .use-cases {
+            background-color: var(--light-green);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .case-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .case-card h3 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.5rem;
+        }
+
+        .case-card p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .case-card .role {
+            display: inline-block;
+            background-color: rgba(0, 102, 255, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: var(--spacing-md);
+        }
+
+        /* Why Masna Section */
+        .why-masna {
+            background-color: white;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(0, 102, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .feature-icon i {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Role Selection Section */
+        .role-selection {
+            background-color: var(--light-blue);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .role-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .role-image {
+            height: 200px;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .role-image img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .role-content {
+            padding: var(--spacing-lg);
+        }
+
+        .role-title {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .role-subtitle {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .role-features {
+            list-style: none;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .role-features li {
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .role-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Integrations Section */
+        .integrations {
+            background-color: white;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .integrations-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .integrations-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .integration-logo {
+            width: 100px;
+            height: 100px;
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .integration-logo img {
+            max-width: 60%;
+            max-height: 60%;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: var(--light-purple);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: var(--spacing-md);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(0, 102, 255, 0.05);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            padding: 0 var(--spacing-md);
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-question {
+            background-color: rgba(0, 102, 255, 0.05);
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-item.active .faq-answer {
+            padding: var(--spacing-md);
+            max-height: 1000px;
+        }
+
+        /* CTA */
+        .cta {
+            background-color: var(--light-green);
+            color: var(--text-dark);
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .cta h2 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta p {
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta .btn {
+            background-color: var(--primary);
+            color: white;
+            margin: 0 var(--spacing-sm);
+        }
+
+        .cta .btn:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: var(--text-light);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .footer h3 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .copyright {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .social-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile Navigation Styles - Updated */
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .navbar .container {
+                position: relative;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero-content {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                gap: var(--spacing-lg);
+            }
+
+            .cases-grid,
+            .features-grid,
+            .role-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: var(--spacing-lg) 0;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .case-card,
+            .feature-card,
+            .role-card {
+                padding: var(--spacing-md);
+            }
+        }
+    </style>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Masna<span> AI</span></a>
+
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#industries">Industries</a></li>
+                <li><a href="index.html#enterprise">Enterprise</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#industries">Industries</a></li>
+            <li><a href="index.html#enterprise">Enterprise</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Unlock revenue potential & sales efficiency with Masna</h1>
+                <p>Free up your sales teams to focus on what truly matters - building connections and closing deals.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Book a demo</a>
+                    <a href="#solutions" class="btn btn-outline">Learn more</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/sales-marketing/hero.svg" alt="Masna AI Sales Marketing">
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <div class="partners-title">Trusted by</div>
+            <div class="partners-logo">
+                <img src="assets/sales-marketing/partner-logo1.svg" alt="Partner Logo">
+                <img src="assets/sales-marketing/partner-logo2.svg" alt="Partner Logo">
+                <img src="assets/sales-marketing/partner-logo3.svg" alt="Partner Logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Supercharge your Sales & Marketing with the very best of Agentic AI</h2>
+                <p>From more quality leads to deal-winning proposals, unlock revenue potential with Agentic AI automation</p>
+            </div>
+
+            <div class="cases-grid">
+                <div class="case-card">
+                    <h3>Generate high intent leads and craft personalized emails</h3>
+                    <p>Leverage trillions of buyer intent signals to generate targeted leads and craft personalised emails for the highest conversion.</p>
+                    <span class="role">AI SDR</span>
+                </div>
+
+                <div class="case-card">
+                    <h3>Perform market research to drive strategy</h3>
+                    <p>Helps with deep industry, competitor, and user research and analytics on external and internal data sources</p>
+                    <span class="role">MARKET RESEARCH ANALYST</span>
+                </div>
+
+                <div class="case-card">
+                    <h3>Close more deals with sales insights</h3>
+                    <p>Access well-researched reports on companies, competition, and executives to move deals faster with insight-led sales strategies.</p>
+                    <span class="role">SALES INTELLIGENT ANALYST</span>
+                </div>
+
+                <div class="case-card">
+                    <h3>Optimize sales funnel</h3>
+                    <p>Receive instant analytics to enhance decision-making speed and accuracy.</p>
+                    <span class="role">SALES DATA ANALYST</span>
+                </div>
+
+                <div class="case-card">
+                    <h3>Accelerate proposal creation</h3>
+                    <p>Generate high-quality proposals enriched with charts, tables, and images.</p>
+                    <span class="role">PROPOSAL WRITER</span>
+                </div>
+
+                <div class="case-card">
+                    <h3>Streamline technical responses</h3>
+                    <p>Reduce response times for technical sales teams by enabling them to quickly and confidently address customers' queries.</p>
+                    <span class="role">SALES ENGINEER</span>
+                </div>
+
+                <div class="case-card">
+                    <h3>Engage and grow your accounts</h3>
+                    <p>Engage proactively with current accounts with assistive recommendations for better adoption and upsells.</p>
+                    <span class="role">CUSTOMER SUCCESS</span>
+                </div>
+
+                <div class="case-card">
+                    <h3>Automate end-to-end marketing campaigns</h3>
+                    <p>Design marketing campaigns for existing and prospective customers. Crafts personalised content and engagement plans.</p>
+                    <span class="role">CAMPAIGN MANAGER</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Masna Section -->
+    <section class="why-masna section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why hire Masna?</h2>
+                <p>The only agentic platform you need</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Richest data in the industry</h3>
+                    <p>With data collated from 20+ public and many proprietary sources, Masna helps you cut through the noise from dozens of data subscriptions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Unparalleled accuracy</h3>
+                    <p>Masna maximizes accuracy at the lowest possible cost using 2T+ parameter proprietary MasnaFusion™ model.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Simple to Use</h3>
+                    <p>Masna helps your teams collaborate with each other and AI via bespoke user experiences for each use case, giving you the best of both natural language interaction and traditional dashboards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Role Selection Section -->
+    <section class="role-selection section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Prioritize what matters most, and let Masna automate the rest</h2>
+                <p>Elevate your sales and marketing workflows with targeted lead generation, deal winning proposals, and actionable sales intelligence reports.</p>
+            </div>
+
+            <div class="role-cards">
+                <div class="role-card">
+                    <div class="role-image">
+                        <img src="assets/sales-marketing/ai-sdr.svg" alt="AI SDR">
+                    </div>
+                    <div class="role-content">
+                        <h3 class="role-title">AI SDR</h3>
+                        <p class="role-subtitle">Book 5x more meetings without growing headcount</p>
+                        <ul class="role-features">
+                            <li>Track and engage high-intent buyers</li>
+                            <li>Improve conversion with hyper-personalized messaging</li>
+                            <li>Craft messaging that gets more effective over time</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-image">
+                        <img src="assets/sales-marketing/proposal-writer.svg" alt="Proposal Writer">
+                    </div>
+                    <div class="role-content">
+                        <h3 class="role-title">PROPOSAL WRITER</h3>
+                        <p class="role-subtitle">Create deal-winning proposals 10X faster</p>
+                        <ul class="role-features">
+                            <li>Accurately respond to complex RFPs</li>
+                            <li>Finetune any section of the proposal with the regenerate feature</li>
+                            <li>Elevate proposal with charts, images, and tables</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-image">
+                        <img src="assets/sales-marketing/sales-intelligence.svg" alt="Sales Intelligence Analyst">
+                    </div>
+                    <div class="role-content">
+                        <h3 class="role-title">SALES INTELLIGENCE ANALYST</h3>
+                        <p class="role-subtitle">More effective sales meetings</p>
+                        <ul class="role-features">
+                            <li>Understand the buyers' motivations and decision-making criteria</li>
+                            <li>Get competitive intelligence and data analysis at your fingertips</li>
+                            <li>Leverage insight-led selling to be better positioned to win</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-image">
+                        <img src="assets/sales-marketing/sales-engineer.svg" alt="Sales Engineer">
+                    </div>
+                    <div class="role-content">
+                        <h3 class="role-title">SALES ENGINEER</h3>
+                        <p class="role-subtitle">Reduce response time by 60% for technical sales teams</p>
+                        <ul class="role-features">
+                            <li>Understand technical complexities faster</li>
+                            <li>Leverage accurate data sources</li>
+                            <li>Boost customer satisfaction</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-image">
+                        <img src="assets/sales-marketing/data-analyst.svg" alt="Sales Data Analyst">
+                    </div>
+                    <div class="role-content">
+                        <h3 class="role-title">SALES DATA ANALYST</h3>
+                        <p class="role-subtitle">Optimise Sales Funnel</p>
+                        <ul class="role-features">
+                            <li>Integrates into existing analytics ecosystem</li>
+                            <li>Instant analytics to improve decision-making speed and accuracy</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrations Section -->
+    <section class="integrations section">
+        <div class="container">
+            <div class="integrations-container">
+                <h2>Integrate with tools you already use</h2>
+                <p>Supercharge your sales and marketing workflows with targeted lead generation deal-closing proposals, and actionable sales intelligence reports.</p>
+                
+                <div class="integrations-logos">
+                    <div class="integration-logo">
+                        <img src="assets/integrations/salesforce.svg" alt="Salesforce">
+                    </div>
+                    <div class="integration-logo">
+                        <img src="assets/integrations/hubspot.svg" alt="HubSpot">
+                    </div>
+                    <div class="integration-logo">
+                        <img src="assets/integrations/marketo.svg" alt="Marketo">
+                    </div>
+                    <div class="integration-logo">
+                        <img src="assets/integrations/slack.svg" alt="Slack">
+                    </div>
+                    <div class="integration-logo">
+                        <img src="assets/integrations/zendesk.svg" alt="Zendesk">
+                    </div>
+                    <div class="integration-logo">
+                        <img src="assets/integrations/mailchimp.svg" alt="Mailchimp">
+                    </div>
+                </div>
+                
+                <a href="contact.html" class="btn">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq section">
+        <div class="container">
+            <div class="section-header">
+                <h2>FAQs on Masna's Sales & Marketing Suite</h2>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">What is Masna's Sales & Marketing Suite?</div>
+                    <div class="faq-answer">
+                        <p>Masna's Sales & Marketing Suite is an AI-powered platform designed to streamline sales and marketing workflows. It automates repetitive tasks, enhances team productivity, and drives revenue growth with specialized AI employees tailored to each stage of the sales process.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How does the Sales & Marketing Suite benefit my team?</div>
+                    <div class="faq-answer">
+                        <p>The suite automates time-consuming tasks like lead generation, email personalization, proposal creation, and forecasting, allowing your team to focus on high-value activities like closing deals and nurturing relationships.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How quickly can I start using Masna's Sales & Marketing Suite?</div>
+                    <div class="faq-answer">
+                        <p>Onboarding is seamless and takes less than five minutes. The suite integrates effortlessly with your existing tools, enabling immediate optimization of your workflows. Simply schedule a demo with us, and our team will guide you through the setup.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is the suite suitable for my business?</div>
+                    <div class="faq-answer">
+                        <p>Masna's Sales & Marketing Suite is ideal for all sales and marketing teams, particularly those aiming to scale their efforts, improve efficiency, and boost revenue.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What is the ROI of using Masna's Sales & Marketing Suite?</div>
+                    <div class="faq-answer">
+                        <p>Businesses often see significant returns within months, thanks to increased engagement, higher conversion rates, and time saved through automation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta section">
+        <div class="container">
+            <h2>Ready to revolutionize your sales and marketing?</h2>
+            <h3>Take the first step to transform your sales processes</h3>
+            <div>
+                <a href="#" class="btn">Book a demo</a>
+                <a href="mailto:contact@masna.ai" class="btn">Contact us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Masna AI</h3>
+                    <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through intelligent automation.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="sales-marketing.html">Sales & Marketing</a></li>
+                        <li><a href="health-care.html">Healthcare</a></li>
+                        <li><a href="employee-experience.html">Employee Experience</a></li>
+                        <li><a href="construction.html">Construction</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Enterprise</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#enterprise">Model Fine-tuning</a></li>
+                        <li><a href="index.html#enterprise">Secure Deployment</a></li>
+                        <li><a href="index.html#enterprise">Integration</a></li>
+                        <li><a href="index.html#enterprise">Consulting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Masna AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Functionality
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.overlay');
+
+            menuToggle.addEventListener('click', function () {
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            overlay.addEventListener('click', function () {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    menuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // FAQ Accordion Functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
