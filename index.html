@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masna AI - Leading Agentic AI Solutions in the Middle East</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0066ff;
+            --secondary: #001233;
+            --accent: #ff6b00;
+            --light: #f5f7fa;
+            --dark: #001233;
+            --success: #00c853;
+            --text-dark: #333;
+            --text-light: #f5f7fa;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 32px;
+            --spacing-xl: 64px;
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: var(--spacing-md) 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-md);
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(255, 107, 0, 0.1) 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            z-index: 1;
+        }
+
+        /* Features */
+        .features {
+            background-color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature-card {
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Industries */
+        .industries {
+            background-color: var(--light);
+        }
+
+        .industry-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .industry-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .industry-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .industry-content {
+            padding: var(--spacing-lg);
+        }
+
+        .industry-card h3 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .industry-card p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Enterprise Solutions */
+        .enterprise {
+            background-color: var(--secondary);
+            color: var(--text-light);
+        }
+
+        .enterprise h2, .enterprise h3 {
+            color: var(--text-light);
+        }
+
+        .enterprise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .enterprise-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            transition: all 0.3s ease;
+        }
+
+        .enterprise-card:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* CTA */
+        .cta {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: white;
+        }
+
+        .cta .btn {
+            background-color: white;
+            color: var(--primary);
+            margin-top: var(--spacing-md);
+        }
+
+        .cta .btn:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: var(--text-light);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .footer h3 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .nav-links {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: var(--spacing-lg) 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Masna<span> AI</span></a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#enterprise">Enterprise</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Leading Agentic AI Solutions in the Middle East</h1>
+                <p>Masna AI empowers businesses with intelligent agentic AI solutions that transform operations, enhance customer experiences, and drive growth.</p>
+                <a href="#contact" class="btn">Get Started</a>
+                <a href="#industries" class="btn btn-outline" style="margin-left: 10px;">Explore Solutions</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="/assets/hero.svg" alt="Masna AI Technology" />
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <div class="text-center">
+                <h2>Why Choose Masna AI?</h2>
+                <p>Our agentic AI solutions deliver tangible business outcomes with cutting-edge technology</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Advanced AI Agents</h3>
+                    <p>Purpose-built AI agents that work autonomously to solve complex business challenges</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Rapid Deployment</h3>
+                    <p>Get up and running quickly with our streamlined implementation process</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Enterprise Security</h3>
+                    <p>Industry-leading security protocols to keep your data and AI systems protected</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Measurable Results</h3>
+                    <p>Clear metrics and KPIs to track the impact of AI on your business outcomes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries" class="section industries">
+        <div class="container">
+            <div class="text-center">
+                <h2>Industry Solutions</h2>
+                <p>Tailored AI solutions for diverse industry challenges</p>
+            </div>
+            <div class="industry-cards">
+                <div class="industry-card">
+                    <div class="industry-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="industry-content">
+                        <h3>Sales and Marketing</h3>
+                        <p>Unlock revenue potential & sales efficiency with Masna</p>
+                        <p>Our AI agents automate prospecting, enhance customer interactions, and optimize marketing campaigns for maximum ROI.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="industry-content">
+                        <h3>Healthcare</h3>
+                        <p>One AI Employee to Unlock Superhuman Efficiency</p>
+                        <p>Improve patient experience and tackle the shortage of healthcare workers with intelligent automation and support.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="industry-content">
+                        <h3>Employee Experience</h3>
+                        <p>Make Every Part of the Employee Experience Delightful</p>
+                        <p>From onboarding to retention, elevate every step of employee experience with Agentic AI solutions.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="industry-content">
+                        <h3>Construction</h3>
+                        <p>AI quoting for wholesale and distribution and manufactures</p>
+                        <p>Streamline bidding processes, optimize resource allocation, and improve project management with intelligent AI solutions.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Section -->
+    <section id="enterprise" class="section enterprise">
+        <div class="container">
+            <div class="text-center">
+                <h2>Enterprise AI Adoption</h2>
+                <p>Empowering enterprises with secure, customized AI deployment</p>
+            </div>
+            <div class="enterprise-grid">
+                <div class="enterprise-card">
+                    <h3>Custom Model Fine-tuning</h3>
+                    <p>Train AI models on your specific business data for superior performance and relevance to your unique challenges.</p>
+                </div>
+                <div class="enterprise-card">
+                    <h3>Secure Deployment</h3>
+                    <p>Implement AI solutions with enterprise-grade security protocols and compliance with regional regulations.</p>
+                </div>
+                <div class="enterprise-card">
+                    <h3>Integration Expertise</h3>
+                    <p>Seamlessly connect AI agents with your existing systems and workflows for maximum efficiency.</p>
+                </div>
+                <div class="enterprise-card">
+                    <h3>Continuous Optimization</h3>
+                    <p>Ongoing support and model refinement to ensure your AI solutions evolve with your business needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <h2>Ready to Transform Your Business with AI?</h2>
+            <p>Schedule a consultation with our AI experts to explore how Masna AI can drive innovation in your organization.</p>
+            <a href="#contact" class="btn">Contact Us Today</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="text-center">
+                <h2>Get in Touch</h2>
+                <p>Let's discuss how Masna AI can help your business thrive</p>
+            </div>
+            <div style="max-width: 600px; margin: 0 auto; padding: 40px; text-align: center; background-color: white; border-radius: var(--border-radius); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
+                <div style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;">📧</div>
+                <h3 style="margin-bottom: 10px;">Email Us</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 30px;"><a href="mailto:contact@masnaai.com">contact@masnaai.com</a></p>
+                
+                <div style="font-size: 4rem; color: var(--primary); margin-bottom: 20px; margin-top: 40px;">📞</div>
+                <h3 style="margin-bottom: 10px;">Call Us</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 30px;">+971 4 123 4567</p>
+                
+                <a href="mailto:contact@masnaai.com" class="btn" style="margin-top: 20px;">Contact Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Masna AI</h3>
+                    <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through intelligent automation.</p>
+                </div>
+                <div>
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Sales & Marketing</a></li>
+                        <li><a href="#">Healthcare</a></li>
+                        <li><a href="#">Employee Experience</a></li>
+                        <li><a href="#">Construction</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Enterprise</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Model Fine-tuning</a></li>
+                        <li><a href="#">Secure Deployment</a></li>
+                        <li><a href="#">Integration</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Masna AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
