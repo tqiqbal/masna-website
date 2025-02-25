@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Masna AI - Construction Solutions</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0066ff;
+            --secondary: #001233;
+            --accent: #ff6b00;
+            --light: #f5f7fa;
+            --dark: #001233;
+            --success: #00c853;
+            --text-dark: #333;
+            --text-light: #f5f7fa;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 32px;
+            --spacing-xl: 64px;
+            --border-radius: 8px;
+            
+            /* Custom colors */
+            --light-purple: #bbabe9;
+            --light-green: #aedbbe;
+            --light-blue: #8ac5ec;
+            --light-orange: #f1dba6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: var(--spacing-md) 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-md);
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--light-orange);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(241, 219, 166, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 50%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: var(--spacing-md);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-dark);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            z-index: 1;
+        }
+
+        /* Partners Section */
+        .partners {
+            background-color: white;
+            padding: var(--spacing-lg) 0;
+        }
+
+        .partners-title {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            opacity: 0.7;
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+        }
+
+        .partners-logo {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-md);
+        }
+
+        .partners-logo img {
+            height: 50px;
+            object-fit: contain;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: var(--light-green);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .benefits-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .benefit-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefit-card h3 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Solution Sections */
+        .solution-section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .solution-section:nth-of-type(odd) {
+            background-color: white;
+        }
+
+        .solution-section:nth-of-type(even) {
+            background-color: var(--light-blue);
+        }
+
+        .solution-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+
+        .solution-content {
+            flex: 1;
+        }
+
+        .solution-image {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .solution-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Product Data Section */
+        .product-data {
+            background-color: var(--light-purple);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .product-data-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            background-color: white;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .testimonial-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-content {
+            flex: 2;
+        }
+
+        .testimonial-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: var(--spacing-md);
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .testimonial-info p {
+            color: var(--text-dark);
+            opacity: 0.7;
+        }
+
+        .testimonial-logo {
+            flex: 1;
+            text-align: center;
+        }
+
+        .testimonial-logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* CTA */
+        .cta {
+            background-color: var(--light-green);
+            color: var(--text-dark);
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .cta h2 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta h3 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-lg);
+            font-weight: 500;
+            font-size: 1.5rem;
+        }
+
+        .cta .btn {
+            background-color: var(--primary);
+            color: white;
+            margin: 0 var(--spacing-sm);
+        }
+
+        .cta .btn:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: var(--text-light);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .footer h3 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .solution-container,
+            .testimonial-container {
+                flex-direction: column;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .nav-links {
+                justify-content: center;
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: var(--spacing-lg) 0;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 60vh;
+            }
+            
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+                display: block;
+                width: 100%;
+                margin-bottom: var(--spacing-md);
+            }
+            
+            .btn-outline {
+                margin-left: 0 !important;
+            }
+            
+            .benefit-card {
+                padding: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Masna<span> AI</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#industries">Industries</a></li>
+                <li><a href="index.html#enterprise">Enterprise</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI Quoting for wholesalers & manufacturers</h1>
+                <p>Masna automates quoting from BOQs and BOMs with AI, so that you can create more successful quotes faster and increase your sales.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Book a demo</a>
+                    <a href="#solutions" class="btn btn-outline">Learn more</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/construction-hero.svg" alt="Construction Solutions" />
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <div class="partners-title">Backed by</div>
+            <div class="partners-logo">
+                <img src="assets/partner-logo.png" alt="Partner Logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="solutions" class="benefits section">
+        <div class="container">
+            <div class="benefits-header">
+                <h2>Reduce costs & increase revenue with AI</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Save time & money</h3>
+                    <p>Find spec-compliant products for customer requests up to 80% faster and avoid errors with our automated quote generation.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Increase sales & conversion rate</h3>
+                    <p>Increase your sales potential and outpace any competition by responding faster to all incoming requests.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Gain transparency & overview</h3>
+                    <p>Gain full visibility into your business and analyze sales performance to develop your team into top salespeople.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOQ Solution Section -->
+    <section class="solution-section">
+        <div class="container solution-container">
+            <div class="solution-content">
+                <h2>Bill of quantities (BOQ)</h2>
+                <h3>Automated BOQ processing</h3>
+                <p>Masna automatically matches bill of quantities to the right products in your inventory, freeing your sales team from manual matching. This allows you to fully focus on building customer relationships.</p>
+            </div>
+            <div class="solution-image">
+                <img src="assets/boq-solution.jpg" alt="BOQ Solution">
+            </div>
+        </div>
+    </section>
+
+    <!-- BOM Solution Section -->
+    <section class="solution-section">
+        <div class="container solution-container">
+            <div class="solution-image">
+                <img src="assets/bom-solution.jpg" alt="BOM Solution">
+            </div>
+            <div class="solution-content">
+                <h2>Bill of materials (BOMs)</h2>
+                <h3>Instant product matching with AI</h3>
+                <p>Import messy BOMs in any format and let AI instantly match them to your inventory—no more struggling to find the part you need.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sales Reporting Section -->
+    <section class="solution-section">
+        <div class="container solution-container">
+            <div class="solution-content">
+                <h2>Sales reporting</h2>
+                <h3>Better visibility of your business</h3>
+                <p>Gain full transparency into your sales activities and analyze performance by location and employee to replicate successful strategies.</p>
+            </div>
+            <div class="solution-image">
+                <img src="assets/sales-reporting.jpg" alt="Sales Reporting">
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Data Section -->
+    <section class="product-data section">
+        <div class="container">
+            <span class="product-data-tag">Product data</span>
+            <h2>Enhanced product data</h2>
+            <p>We enrich your product catalog with external data and transform it into fully categorized and attributed products. This improves your product data management and enables you to provide customers with more precise information.</p>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial section">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">Leading wholesalers rely on Masna</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">"With the support of Masna, we can automatically answer many times more BOQ requests in the project business. This allows us to maximize our sales potential and win more customers."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="assets/testimonial-avatar.jpg" alt="Michael Kania">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Michael Kania</h4>
+                            <p>VP Controlling Sanitär Heinze (HVAC wholesaler, 1300 FTEs)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-logo">
+                    <img src="assets/testimonial-company-logo.png" alt="Company Logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta section">
+        <div class="container">
+            <h2>Ready to get started?</h2>
+            <h3>Take the first step to automate quoting at your business</h3>
+            <div>
+                <a href="#" class="btn">Book a demo</a>
+                <a href="mailto:contact@masna.ai" class="btn">Contact us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Masna AI</h3>
+                    <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through intelligent automation.</p>
+                </div>
+                <div>
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Sales & Marketing</a></li>
+                        <li><a href="healthcare.html">Healthcare</a></li>
+                        <li><a href="employee-experience.html">Employee Experience</a></li>
+                        <li><a href="construction.html">Construction</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Enterprise</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Model Fine-tuning</a></li>
+                        <li><a href="#">Secure Deployment</a></li>
+                        <li><a href="#">Integration</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Masna AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
