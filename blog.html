@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Masna AI - Blog</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0066ff;
+            --primary-light: #4d94ff;
+            --primary-dark: #0052cc;
+            --secondary: #001233;
+            --accent: #ff6b00;
+            --light: #f5f7fa;
+            --dark: #001233;
+            --success: #00c853;
+            --text-dark: #333;
+            --text-light: #f5f7fa;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 32px;
+            --spacing-xl: 64px;
+            --border-radius: 8px;
+            
+            /* Custom colors */
+            --light-purple: #bbabe9;
+            --light-green: #aedbbe;
+            --light-blue: #8ac5ec;
+            --light-orange: #f1dba6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: var(--spacing-md) 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-md);
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: var(--light-purple);
+            color: var(--text-dark);
+            padding: var(--spacing-xl) 0;
+            position: relative;
+        }
+
+        .page-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: var(--light);
+            clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--secondary);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 0;
+        }
+
+        /* Blog Layout */
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        /* Featured Post */
+        .featured-post {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .featured-post-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .featured-content {
+            padding: var(--spacing-lg);
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-dark);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .post-meta div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .post-meta i {
+            color: var(--primary);
+        }
+
+        .featured-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--secondary);
+        }
+
+        .featured-content p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Blog Posts */
+        .blog-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .blog-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            height: 200px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-content {
+            padding: var(--spacing-md);
+        }
+
+        .blog-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--secondary);
+        }
+
+        .blog-excerpt {
+            margin-bottom: var(--spacing-md);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Tags and Categories */
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: var(--primary-light);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-widget {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-widget h3 {
+            margin-bottom: var(--spacing-md);
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .categories-list {
+            list-style: none;
+        }
+
+        .categories-list li {
+            margin-bottom: var(--spacing-sm);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .categories-list li:last-child {
+            border-bottom: none;
+        }
+
+        .popular-posts-list {
+            list-style: none;
+        }
+
+        .popular-post-item {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .popular-post-image {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .popular-post-content h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .popular-post-date {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            opacity: 0.7;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-xl);
+        }
+
+        .pagination-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-item:hover, .pagination-item.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--light-green);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+        }
+
+        .newsletter-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 0 var(--spacing-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--accent);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: var(--text-light);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .footer h3 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .copyright {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .social-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile Navigation Styles - Updated */
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .navbar .container {
+                position: relative;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .blog-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                margin-top: var(--spacing-lg);
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .blog-posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: var(--spacing-lg) 0;
+            }
+
+            .featured-image {
+                height: 250px;
+            }
+
+            .featured-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .newsletter-input {
+                border-radius: var(--border-radius);
+            }
+
+            .newsletter-btn {
+                border-radius: var(--border-radius);
+                width: 100%;
+                padding: 12px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Masna<span> AI</span></a>
+
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#industries">Industries</a></li>
+                <li><a href="index.html#enterprise">Enterprise</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#industries">Industries</a></li>
+            <li><a href="index.html#enterprise">Enterprise</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Masna AI Blog</h1>
+            <p>Insights, trends, and updates on AI innovation in the Middle East and beyond</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="section">
+        <div class="container">
+            <!-- Featured Post -->
+            <div class="featured-post">
+                <div class="featured-post-card">
+                    <div class="featured-image" style="background-image: url('assets/blog/featured-post.jpg');"></div>
+                    <div class="featured-content">
+                        <div class="post-meta">
+                            <div><i class="far fa-calendar"></i> February 15, 2025</div>
+                            <div><i class="far fa-user"></i> Sara Al-Qahtani</div>
+                            <div><i class="far fa-folder"></i> AI Innovation</div>
+                        </div>
+                        <h2>MasnaFusion™: How Our Multi-Model Approach Is Changing Enterprise AI</h2>
+                        <p>In this in-depth article, we explore the technical architecture behind our proprietary MasnaFusion™ model and how it's helping enterprises reduce hallucinations, improve accuracy, and deliver more reliable AI solutions.</p>
+                        <p>Traditional large language models (LLMs) have revolutionized what's possible with AI, but they come with significant limitations when deployed in mission-critical enterprise environments. MasnaFusion™ takes a different approach by...</p>
+                        <a href="blog-post.html" class="btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-layout">
+                <div class="main-content">
+                    <div class="blog-posts-grid">
+                        <!-- Blog Post 1 -->
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('assets/blog/post1.jpg');"></div>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <div><i class="far fa-calendar"></i> February 10, 2025</div>
+                                </div>
+                                <h3>The ROI of AI Adoption in Healthcare: A Case Study</h3>
+                                <p class="blog-excerpt">How a leading hospital group in Saudi Arabia achieved a 40% reduction in administrative workload and improved patient satisfaction by implementing Masna's healthcare AI solutions.</p>
+                                <div>
+                                    <a href="#" class="tag">Healthcare</a>
+                                    <a href="#" class="tag">ROI</a>
+                                </div>
+                                <a href="blog-post.html" class="btn" style="margin-top: 15px;">Read More</a>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 2 -->
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('assets/blog/post2.jpg');"></div>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <div><i class="far fa-calendar"></i> February 5, 2025</div>
+                                </div>
+                                <h3>AI in Construction: Beyond the Buzzwords</h3>
+                                <p class="blog-excerpt">Exploring the practical applications of AI in the construction industry, from automated BOQ processing to project management and risk assessment.</p>
+                                <div>
+                                    <a href="#" class="tag">Construction</a>
+                                    <a href="#" class="tag">Industry</a>
+                                </div>
+                                <a href="blog-post.html" class="btn" style="margin-top: 15px;">Read More</a>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 3 -->
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('assets/blog/post3.jpg');"></div>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <div><i class="far fa-calendar"></i> January 28, 2025</div>
+                                </div>
+                                <h3>Ethical AI Development in the Middle East</h3>
+                                <p class="blog-excerpt">As AI adoption accelerates across the region, how can organizations ensure they're developing and deploying AI in an ethical, responsible manner?</p>
+                                <div>
+                                    <a href="#" class="tag">Ethics</a>
+                                    <a href="#" class="tag">Policy</a>
+                                </div>
+                                <a href="blog-post.html" class="btn" style="margin-top: 15px;">Read More</a>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 4 -->
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('assets/blog/post4.jpg');"></div>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <div><i class="far fa-calendar"></i> January 20, 2025</div>
+                                </div>
+                                <h3>The Future of Sales: How AI is Transforming B2B Sales Processes</h3>
+                                <p class="blog-excerpt">From lead generation to proposal creation, discover how AI-powered automation is helping sales teams close more deals with less effort.</p>
+                                <div>
+                                    <a href="#" class="tag">Sales</a>
+                                    <a href="#" class="tag">Automation</a>
+                                </div>
+                                <a href="blog-post.html" class="btn" style="margin-top: 15px;">Read More</a>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 5 -->
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('assets/blog/post5.jpg');"></div>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <div><i class="far fa-calendar"></i> January 15, 2025</div>
+                                </div>
+                                <h3>AI Security: Protecting Your Models and Data</h3>
+                                <p class="blog-excerpt">With the rise of AI adoption comes increased security risks. Learn about the best practices for securing your AI models and sensitive data.</p>
+                                <div>
+                                    <a href="#" class="tag">Security</a>
+                                    <a href="#" class="tag">Data Protection</a>
+                                </div>
+                                <a href="blog-post.html" class="btn" style="margin-top: 15px;">Read More</a>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 6 -->
+                        <div class="blog-card">
+                            <div class="blog-image" style="background-image: url('assets/blog/post6.jpg');"></div>
+                            <div class="blog-content">
+                                <div class="post-meta">
+                                    <div><i class="far fa-calendar"></i> January 8, 2025</div>
+                                </div>
+                                <h3>From Pilot to Production: Scaling AI Across Your Organization</h3>
+                                <p class="blog-excerpt">Moving beyond small-scale AI experiments to full enterprise deployment requires careful planning. Here's our framework for successful AI scaling.</p>
+                                <div>
+                                    <a href="#" class="tag">Enterprise</a>
+                                    <a href="#" class="tag">Implementation</a>
+                                </div>
+                                <a href="blog-post.html" class="btn" style="margin-top: 15px;">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <a href="#" class="pagination-item active">1</a>
+                        <a href="#" class="pagination-item">2</a>
+                        <a href="#" class="pagination-item">3</a>
+                        <a href="#" class="pagination-item"><i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Search Widget -->
+                    <div class="sidebar-widget">
+                        <h3>Search</h3>
+                        <form class="search-form">
+                            <input type="text" class="search-input" placeholder="Search blog...">
+                            <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+
+                    <!-- Categories Widget -->
+                    <div class="sidebar-widget">
+                        <h3>Categories</h3>
+                        <ul class="categories-list">
+                            <li><a href="#">AI Innovation (12)</a></li>
+                            <li><a href="#">Industry Solutions (8)</a></li>
+                            <li><a href="#">Technical Insights (15)</a></li>
+                            <li><a href="#">Case Studies (6)</a></li>
+                            <li><a href="#">AI Ethics (4)</a></li>
+                            <li><a href="#">Company News (7)</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Posts Widget -->
+                    <div class="sidebar-widget">
+                        <h3>Popular Posts</h3>
+                        <ul class="popular-posts-list">
+                            <li class="popular-post-item">
+                                <div class="popular-post-image" style="background-image: url('assets/blog/popular1.jpg');"></div>
+                                <div class="popular-post-content">
+                                    <h4><a href="#">The State of AI in the Middle East 2025</a></h4>
+                                    <div class="popular-post-date">January 3, 2025</div>
+                                </div>
+                            </li>
+                            <li class="popular-post-item">
+                                <div class="popular-post-image" style="background-image: url('assets/blog/popular2.jpg');"></div>
+                                <div class="popular-post-content">
+                                    <h4><a href="#">10 Ways AI is Transforming Healthcare Delivery</a></h4>
+                                    <div class="popular-post-date">December 28, 2024</div>
+                                </div>
+                            </li>
+                            <li class="popular-post-item">
+                                <div class="popular-post-image" style="background-image: url('assets/blog/popular3.jpg');"></div>
+                                <div class="popular-post-content">
+                                    <h4><a href="#">Understanding Agentic AI: Beyond Chatbots</a></h4>
+                                    <div class="popular-post-date">December 15, 2024</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tags Widget -->
+                    <div class="sidebar-widget">
+                        <h3>Tags</h3>
+                        <div class="tags-cloud">
+                            <a href="#" class="tag">AI</a>
+                            <a href="#" class="tag">Machine Learning</a>
+                            <a href="#" class="tag">Healthcare</a>
+                            <a href="#" class="tag">Construction</a>
+                            <a href="#" class="tag">Sales</a>
+                            <a href="#" class="tag">Marketing</a>
+                            <a href="#" class="tag">Ethics</a>
+                            <a href="#" class="tag">Security</a>
+                            <a href="#" class="tag">Implementation</a>
+                            <a href="#" class="tag">Case Study</a>
+                            <a href="#" class="tag">ROI</a>
+                            <a href="#" class="tag">Enterprise</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter section">
+        <div class="container">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Stay updated with the latest insights, trends, and news in AI innovation and implementation</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your email address">
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Masna AI</h3>
+                    <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through intelligent automation.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="sales-marketing.html">Sales & Marketing</a></li>
+                        <li><a href="health-care.html">Healthcare</a></li>
+                        <li><a href="employee-experience.html">Employee Experience</a></li>
+                        <li><a href="construction.html">Construction</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Enterprise</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#enterprise">Model Fine-tuning</a></li>
+                        <li><a href="index.html#enterprise">Secure Deployment</a></li>
+                        <li><a href="index.html#enterprise">Integration</a></li>
+                        <li><a href="index.html#enterprise">Consulting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Masna AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Functionality
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.overlay');
+
+            menuToggle.addEventListener('click', function () {
+                menuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            overlay.addEventListener('click', function () {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    menuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

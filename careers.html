@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Masna AI - Join Our Team</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0066ff;
+            --primary-light: #4d94ff;
+            --primary-dark: #0052cc;
+            --secondary: #001233;
+            --accent: #ff6b00;
+            --light: #f5f7fa;
+            --dark: #001233;
+            --success: #00c853;
+            --text-dark: #333;
+            --text-light: #f5f7fa;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 32px;
+            --spacing-xl: 64px;
+            --border-radius: 8px;
+            
+            /* Custom colors */
+            --light-purple: #bbabe9;
+            --light-green: #aedbbe;
+            --light-blue: #8ac5ec;
+            --light-orange: #f1dba6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: var(--spacing-md) 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-md);
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: var(--light-blue);
+            color: var(--text-dark);
+            padding: var(--spacing-xl) 0;
+            position: relative;
+        }
+
+        .page-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: var(--light);
+            clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--secondary);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 0;
+        }
+
+        /* Why Join Section */
+        .why-join {
+            background-color: white;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .benefit-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 3px solid var(--primary);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .benefit-card h3 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Culture Section */
+        .culture {
+            background-color: var(--light-green);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .culture-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .culture-text h2 {
+            color: var(--secondary);
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .culture-text p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+
+        .culture-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Current Openings */
+        .openings {
+            background-color: white;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .openings-list {
+            margin-top: var(--spacing-lg);
+        }
+
+        .job-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .job-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-info h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            color: var(--text-dark);
+            opacity: 0.8;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .job-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .job-meta i {
+            color: var(--primary);
+        }
+
+        /* Team Testimonials */
+        .testimonials {
+            background-color: var(--light-purple);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .testimonial-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+        }
+
+        .testimonial-content::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -20px;
+            left: -15px;
+            color: var(--primary-light);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: var(--spacing-md);
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--text-dark);
+            opacity: 0.7;
+        }
+
+        /* Application Process */
+        .process {
+            background-color: white;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-lg);
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-light);
+            z-index: 0;
+        }
+
+        .process-step {
+            position: relative;
+            z-index: 1;
+            width: 20%;
+            text-align: center;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        .process-step h3 {
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary);
+        }
+
+        /* CTA */
+        .cta {
+            background-color: var(--light-orange);
+            color: var(--text-dark);
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .cta h2 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta p {
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta .btn {
+            background-color: var(--primary);
+            color: white;
+            margin: 0 var(--spacing-sm);
+        }
+
+        .cta .btn:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: var(--light);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: var(--spacing-md);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(0, 102, 255, 0.05);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            padding: 0 var(--spacing-md);
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-question {
+            background-color: rgba(0, 102, 255, 0.05);
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-item.active .faq-answer {
+            padding: var(--spacing-md);
+            max-height: 1000px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: var(--text-light);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .footer h3 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .copyright {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .social-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile Navigation Styles - Updated */
+        .overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .navbar .container {
+                position: relative;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .culture-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+
+            .culture-image {
+                order: -1;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                gap: var(--spacing-lg);
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .process-step {
+                width: 100%;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: var(--spacing-lg) 0;
+            }
+
+            .benefits-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .job-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-md);
+            }
+
+            .job-meta {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .cta .btn {
+                margin: 0 0 var(--spacing-sm) 0;
+            }
+        }
+    </style>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Masna<span> AI</span></a>
+
+            <!-- Desktop Navigation -->
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#industries">Industries</a></li>
+                <li><a href="index.html#enterprise">Enterprise</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#industries">Industries</a></li>
+            <li><a href="index.html#enterprise">Enterprise</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Join Our Growing Team</h1>
+            <p>Help us shape the future of AI in the Middle East. We're looking for talented individuals who are passionate about innovation and making a difference.</p>
+        </div>
+    </section>
+
+    <!-- Why Join Section -->
+    <section class="why-join section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Join Masna AI?</h2>
+                <p>Be part of a team that's building cutting-edge AI solutions and transforming how businesses operate</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Innovation at the Core</h3>
+                    <p>Work with cutting-edge AI technologies and contribute to solutions that are defining the future of enterprise AI in the Middle East.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Rapid Growth</h3>
+                    <p>Join a fast-growing company where your contributions have real impact and your career can accelerate quickly.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>Competitive Benefits</h3>
+                    <p>Enjoy comprehensive health insurance, flexible working options, stock options, and professional development opportunities.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Diverse Team</h3>
+                    <p>Collaborate with talented colleagues from diverse backgrounds, bringing unique perspectives and expertise to our work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Testimonials -->
+       <!-- Culture Section -->
+       <section class="culture section">
+        <div class="container">
+            <div class="culture-content">
+                <div class="culture-text">
+                    <h2>Our Culture</h2>
+                    <p>At Masna AI, we've built a culture that fosters innovation, collaboration, and personal growth. We believe that when talented people are empowered to do their best work, amazing things happen.</p>
+                    <p>Our team brings together experts in AI research, software engineering, product design, and industry-specific domains. We celebrate diverse perspectives and believe that the best ideas can come from anyone on the team.</p>
+                    <p>We value:</p>
+                    <ul style="margin-left: 20px; margin-bottom: var(--spacing-md);">
+                        <li><strong>Impact:</strong> We prioritize work that creates real value for our clients and advances our mission</li>
+                        <li><strong>Ownership:</strong> We encourage everyone to take initiative and see projects through to completion</li>
+                        <li><strong>Collaboration:</strong> We believe the best solutions emerge when we work together across disciplines</li>
+                        <li><strong>Continuous Learning:</strong> We're committed to developing our skills and staying at the forefront of AI</li>
+                    </ul>
+                </div>
+                <div class="culture-image">
+                    <img src="assets/careers/team-culture.jpg" alt="Masna AI Team Culture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Openings -->
+    <section class="openings section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Current Openings</h2>
+                <p>Join our talented team and help shape the future of AI in the Middle East</p>
+            </div>
+            <div class="openings-list">
+                <div class="job-card">
+                    <div class="job-info">
+                        <h3>Senior AI Engineer</h3>
+                        <div class="job-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Riyadh (Hybrid)</span>
+                            <span><i class="fas fa-briefcase"></i> Full-Time</span>
+                            <span><i class="fas fa-graduation-cap"></i> 5+ Years Experience</span>
+                        </div>
+                        <p>Drive the development of our AI agents and contribute to our cutting-edge MasnaFusion™ model architecture.</p>
+                    </div>
+                    <a href="#" class="btn">Apply Now</a>
+                </div>
+                <div class="job-card">
+                    <div class="job-info">
+                        <h3>Product Manager - Healthcare AI</h3>
+                        <div class="job-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Riyadh (On-site)</span>
+                            <span><i class="fas fa-briefcase"></i> Full-Time</span>
+                            <span><i class="fas fa-graduation-cap"></i> 3+ Years Experience</span>
+                        </div>
+                        <p>Lead the product development for our healthcare AI solutions, working closely with clients and engineering teams.</p>
+                    </div>
+                    <a href="#" class="btn">Apply Now</a>
+                </div>
+                <div class="job-card">
+                    <div class="job-info">
+                        <h3>Software Engineer - Enterprise Integrations</h3>
+                        <div class="job-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                            <span><i class="fas fa-briefcase"></i> Full-Time</span>
+                            <span><i class="fas fa-graduation-cap"></i> 2+ Years Experience</span>
+                        </div>
+                        <p>Develop and maintain integrations between Masna AI's platform and enterprise systems.</p>
+                    </div>
+                    <a href="#" class="btn">Apply Now</a>
+                </div>
+                <div class="job-card">
+                    <div class="job-info">
+                        <h3>Business Development Representative</h3>
+                        <div class="job-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Dubai (On-site)</span>
+                            <span><i class="fas fa-briefcase"></i> Full-Time</span>
+                            <span><i class="fas fa-graduation-cap"></i> 1+ Years Experience</span>
+                        </div>
+                        <p>Drive new business opportunities and help expand Masna AI's presence in the UAE market.</p>
+                    </div>
+                    <a href="#" class="btn">Apply Now</a>
+                </div>
+                <div class="job-card">
+                    <div class="job-info">
+                        <h3>UI/UX Designer</h3>
+                        <div class="job-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Riyadh (Hybrid)</span>
+                            <span><i class="fas fa-briefcase"></i> Full-Time</span>
+                            <span><i class="fas fa-graduation-cap"></i> 3+ Years Experience</span>
+                        </div>
+                        <p>Create intuitive and engaging user experiences for our AI products and web interfaces.</p>
+                    </div>
+                    <a href="#" class="btn">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Team Testimonials -->
+<section class="testimonials section">
+<div class="container">
+    <div class="section-header">
+        <h2>Life at Masna AI</h2>
+        <p>Hear directly from our team members about their experiences working with us</p>
+    </div>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="testimonial-content">
+                Working at Masna AI has been the most rewarding experience of my career. I've had the opportunity to solve complex technical challenges while working alongside brilliant colleagues who are passionate about pushing the boundaries of what's possible with AI.
+            </div>
+            <div class="testimonial-author">
+                <div class="author-image">
+                    <img src="assets/careers/team-member1.jpg" alt="Amira Al-Mansour">
+                </div>
+                <div class="author-info">
+                    <h4>Amira Al-Mansour</h4>
+                    <p>Senior AI Engineer, 2 years at Masna</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-content">
+                What I love most about Masna is the culture of continuous learning. The company invests heavily in our professional development, and I've grown more in my 18 months here than in years at previous companies. Plus, seeing our solutions make a real impact for clients is incredibly satisfying.
+            </div>
+            <div class="testimonial-author">
+                <div class="author-image">
+                    <img src="assets/careers/team-member2.jpg" alt="Tariq Mahmoud">
+                </div>
+                <div class="author-info">
+                    <h4>Tariq Mahmoud</h4>
+                    <p>Product Manager, 1.5 years at Masna</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-content">
+                As someone early in my career, I couldn't have asked for a better place to start. The mentorship I've received has been incredible, and I've been trusted with meaningful work from day one. The flexible work environment also helps maintain a healthy work-life balance.
+            </div>
+            <div class="testimonial-author">
+                <div class="author-image">
+                    <img src="assets/careers/team-member3.jpg" alt="Layla Alqahtani">
+                </div>
+                <div class="author-info">
+                    <h4>Layla Alqahtani</h4>
+                    <p>Software Engineer, 1 year at Masna</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Application Process -->
+<section class="process section">
+<div class="container">
+    <div class="section-header">
+        <h2>Our Application Process</h2>
+        <p>A transparent and efficient journey to joining our team</p>
+    </div>
+    <div class="process-steps">
+        <div class="process-step">
+            <div class="step-number">1</div>
+            <h3>Application</h3>
+            <p>Submit your resume and complete a short questionnaire about your experience and interests.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">2</div>
+            <h3>Initial Screening</h3>
+            <p>A 30-minute call with our recruitment team to discuss your background and the role.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">3</div>
+            <h3>Technical Assessment</h3>
+            <p>Complete a take-home assignment or technical interview relevant to your role.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">4</div>
+            <h3>Team Interviews</h3>
+            <p>Meet with your potential teammates and managers to discuss the role in depth.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">5</div>
+            <h3>Offer</h3>
+            <p>Receive your offer and welcome to the Masna AI team!</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq section">
+<div class="container">
+    <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Common questions about working at Masna AI</p>
+    </div>
+    
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">What is the interview process like?</div>
+            <div class="faq-answer">
+                <p>Our interview process typically consists of an initial screening call, a technical assessment or case study, and team interviews. The entire process usually takes 2-3 weeks, and we strive to provide clear feedback and timely updates throughout.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Do you offer remote work options?</div>
+            <div class="faq-answer">
+                <p>Yes, we offer flexible work arrangements including hybrid and remote options for many roles. Some positions require on-site presence due to their nature, which will be clearly indicated in the job description.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What benefits do you offer?</div>
+            <div class="faq-answer">
+                <p>Our benefits package includes comprehensive health insurance, flexible working options, professional development allowance, stock options, paid time off, parental leave, and regular team events and retreats.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What's your company culture like?</div>
+            <div class="faq-answer">
+                <p>We've built a culture that values innovation, collaboration, impact, and continuous learning. We celebrate diverse perspectives and provide an environment where people feel empowered to do their best work while maintaining work-life balance.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">I don't see a role that matches my skills. Can I still apply?</div>
+            <div class="faq-answer">
+                <p>Absolutely! We're always interested in connecting with talented individuals, even if we don't have an open role that matches your profile right now. Submit your resume to careers@masna.ai with a note about your interests, and we'll keep you in mind for future opportunities.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta section">
+<div class="container">
+    <h2>Ready to join the Masna AI team?</h2>
+    <p>Explore our current openings and take the next step in your career journey</p>
+    <div>
+        <a href="#openings" class="btn">View Open Positions</a>
+        <a href="mailto:careers@masna.ai" class="btn">Contact Recruiting Team</a>
+    </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+    <div class="footer-grid">
+        <div>
+            <h3>Masna AI</h3>
+            <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through intelligent automation.</p>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div>
+            <h3>Solutions</h3>
+            <ul class="footer-links">
+                <li><a href="sales-marketing.html">Sales & Marketing</a></li>
+                <li><a href="health-care.html">Healthcare</a></li>
+                <li><a href="employee-experience.html">Employee Experience</a></li>
+                <li><a href="construction.html">Construction</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Enterprise</h3>
+            <ul class="footer-links">
+                <li><a href="index.html#enterprise">Model Fine-tuning</a></li>
+                <li><a href="index.html#enterprise">Secure Deployment</a></li>
+                <li><a href="index.html#enterprise">Integration</a></li>
+                <li><a href="index.html#enterprise">Consulting</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Company</h3>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2025 Masna AI. All rights reserved.</p>
+    </div>
+</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Mobile Menu Functionality
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.overlay');
+
+    menuToggle.addEventListener('click', function () {
+        menuToggle.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    overlay.addEventListener('click', function () {
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Close mobile menu when clicking on a link
+    const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // FAQ Accordion Functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            item.classList.toggle('active');
+        });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
