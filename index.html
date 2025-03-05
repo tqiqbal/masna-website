@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Masna AI - Leading Agentic AI Solutions in the Middle East</title>
-    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="icon" type="image/png" href="assets/symbol.png">
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +13,15 @@
     <style>
         /* Base Styles */
         :root {
-            --primary: #0066ff;
-            --primary-light: #4d94ff;
-            --primary-dark: #0052cc;
+            --primary: #3532a7;
+            --primary-light: #5452c8;
+            --primary-dark: #282686;
             --secondary: #001233;
-            --accent: #ff6b00;
+            --accent: #6c63ff;
             --light: #f5f7fa;
             --dark: #001233;
             --text-dark: #333;
-            --text-light: #f5f7fa;
+            --text-light: #ffffff;
             --spacing-sm: 8px;
             --spacing-md: 16px;
             --spacing-lg: 32px;
@@ -105,9 +105,9 @@
 
         /* Navbar */
         .navbar {
-            padding: var(--spacing-md) 0;
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            background-color: var(--primary);
+            box-shadow: 0 5px 20px rgba(53, 50, 167, 0.3);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -120,39 +120,128 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--secondary);
+            display: flex;
+            align-items: center;
         }
 
-        .logo span {
-            color: var(--primary);
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: var(--spacing-md);
+            gap: 30px;
         }
 
         .nav-links a {
-            color: var(--text-dark);
-            font-weight: 500;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-nav-links a {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-links a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
         }
 
         /* Hero Section */
         .hero {
-            min-height: 90vh;
+            min-height: 85vh;
             display: flex;
             align-items: center;
-            background-color: var(--primary);
+            justify-content: center;
+            background-color: #f8f9ff;
             position: relative;
             overflow: hidden;
-            color: white;
+            color: var(--text-dark);
+            padding: 80px 0;
         }
 
         .hero::before {
@@ -162,62 +251,124 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.9) 0%, rgba(0, 18, 51, 0.8) 100%);
+            background: radial-gradient(circle at top right, rgba(108, 99, 255, 0.1) 0%, rgba(53, 50, 167, 0.05) 50%, rgba(255, 255, 255, 0) 100%);
             z-index: 0;
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
-            width: 50%;
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: var(--spacing-md);
-            color: white;
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: var(--spacing-lg);
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .hero-image {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 45%;
-            z-index: 1;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
+            justify-content: center;
         }
 
         .hero .btn {
-            background-color: white;
-            color: var(--primary);
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
         }
 
         .hero .btn:hover {
-            background-color: var(--accent);
-            color: white;
+            background-color: var(--primary);
+            opacity: 0.9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(53, 50, 167, 0.2);
         }
 
         .hero .btn-outline {
             background-color: transparent;
-            border: 2px solid white;
-            color: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
         }
 
         .hero .btn-outline:hover {
-            background-color: white;
-            color: var(--primary);
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(53, 50, 167, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+                margin-bottom: 20px;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
+            
+            .hero .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 0;
+                min-height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 25px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+            }
+            
+            .hero .btn {
+                width: 100%;
+                padding: 12px 20px;
+            }
         }
 
         /* Features */
@@ -270,16 +421,17 @@
 
         /* Industries */
         .industries {
-            background-color: var(--primary);
-            color: white;
+            background-color: #f8f9ff;
+            color: var(--text-dark);
         }
 
         .industries .section-header h2 {
-            color: white;
+            color: var(--primary);
         }
 
         .industries .section-header p {
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark);
+            opacity: 0.8;
         }
 
         .industry-cards {
@@ -293,9 +445,10 @@
             background-color: white;
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             color: var(--text-dark);
+            border-left: 4px solid var(--primary);
         }
 
         .industry-card:hover {
@@ -328,7 +481,7 @@
 
         /* Enterprise Solutions */
         .enterprise {
-            background-color: white;
+            background-color: #f8f9ff;
         }
 
         .enterprise-grid {
@@ -339,11 +492,12 @@
         }
 
         .enterprise-card {
-            background-color: var(--light);
+            background-color: white;
             border-radius: var(--border-radius);
             padding: var(--spacing-lg);
             transition: all 0.3s ease;
-            border-bottom: 4px solid var(--primary);
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
         }
 
         .enterprise-card:hover {
@@ -476,20 +630,32 @@
 
         /* Footer */
         .footer {
-            background-color: var(--dark);
-            color: var(--text-light);
-            padding: var(--spacing-lg) 0;
+            background-color: #f8f9ff;
+            color: #333;
+            padding: 60px 0;
+            border-top: 1px solid rgba(53, 50, 167, 0.1);
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--spacing-lg);
+            gap: 40px;
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-logo img {
+            height: 50px;
         }
 
         .footer h3 {
-            color: white;
-            margin-bottom: var(--spacing-md);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: 600;
         }
 
         .footer-links {
@@ -497,32 +663,32 @@
         }
 
         .footer-links li {
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: 12px;
         }
 
         .footer-links a {
-            color: var(--text-light);
-            opacity: 0.8;
+            color: #555;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .footer-links a:hover {
-            opacity: 1;
             color: var(--primary);
         }
 
         .copyright {
-            margin-top: var(--spacing-lg);
-            padding-top: var(--spacing-md);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(53, 50, 167, 0.1);
             text-align: center;
-            opacity: 0.8;
+            color: #777;
         }
 
         /* Social Media Icons */
         .social-icons {
             display: flex;
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-md);
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .social-icon {
@@ -531,7 +697,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(53, 50, 167, 0.1);
             border-radius: 50%;
             transition: all 0.3s ease;
         }
@@ -542,83 +708,15 @@
         }
 
         .social-icon i {
-            color: white;
+            color: var(--primary);
             font-size: 1.2rem;
+        }
+
+        .social-icon:hover i {
+            color: white;
         }
 
         /* Mobile Navigation Styles */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .mobile-menu-toggle span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background-color: var(--primary);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 300px;
-            height: 100vh;
-            background-color: white;
-            z-index: 1000;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-            transition: right 0.3s ease;
-            padding: 80px 30px 30px;
-            overflow-y: auto;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
-        }
-
-        .mobile-nav-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .mobile-nav-links li {
-            margin-bottom: 20px;
-        }
-
-        .mobile-nav-links a {
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 1.2rem;
-            display: block;
-            padding: 8px 0;
-            transition: color 0.3s ease;
-        }
-
-        .mobile-nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Mobile Navigation Styles - Updated */
         .overlay {
             position: fixed;
             top: 0;
@@ -653,10 +751,6 @@
             .hero-content {
                 width: 100%;
                 text-align: center;
-            }
-
-            .hero-image {
-                display: none;
             }
 
             .hero h1 {
@@ -742,7 +836,9 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">Masna<span> AI</span></a>
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="Masna AI Logo">
+            </a>
 
             <!-- Desktop Navigation -->
             <ul class="nav-links">
@@ -780,16 +876,13 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Leading Agentic AI Solutions in the Middle East</h1>
+                <h1>Leading Agentic AI Solutions</h1>
                 <p>Masna AI empowers enterprises with intelligent agentic solutions that transform operations, enhance customer experiences, and drive sustainable growth.</p>
                 <div class="hero-buttons">
                     <a href="contact.html" class="btn">Get Started</a>
                     <a href="#industries" class="btn btn-outline">Explore Solutions</a>
                 </div>
             </div>
-        </div>
-        <div class="hero-image">
-            <img src="assets/hero.svg" alt="Masna AI Technology" />
         </div>
     </section>
 
@@ -816,10 +909,17 @@
                     <h3>Enterprise Security</h3>
                     <p>Industry-leading security protocols to keep your data and AI systems protected</p>
                 </div>
-                <div class="feature-card">
+                <!-- <div class="feature-card">
                     <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
                     <h3>Measurable Results</h3>
-                    <p>Clear metrics and KPIs to track the impact of AI on your business outcomes</p>
+                    <p>Clear metrics and KPIs to track the impact of AI on your business outcomes</p> -->
+                </div>
+            </div>
+            <div class="features-image" style="margin-top: 60px; text-align: center;">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary);">Building Custom AI Agents for Enterprise</h3>
+                    <p style="text-align: center; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">Our team of AI experts designs and develops tailored AI agents that integrate seamlessly with your existing workflows, automating complex tasks and delivering immediate business value.</p>
+                    <img src="assets/ai-1.jpg" alt="Building Custom AI Agents" style="max-width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(53, 50, 167, 0.15);">
                 </div>
             </div>
         </div>
@@ -833,29 +933,29 @@
                 <p>Tailored AI solutions for diverse industry challenges</p>
             </div>
             <div class="industry-cards">
-                <div class="industry-card">
+                <!-- <div class="industry-card">
                     <div class="industry-image" style="background-image: url('assets/sales.svg');"></div>
                     <div class="industry-content">
                         <h3>Sales and Marketing</h3>
-                        <p>Unlock revenue potential & sales efficiency with Masna</p>
+                        <p><strong>Unlock revenue potential & sales efficiency with Masna</strong></p>
                         <p>Our AI agents automate prospecting, enhance customer interactions, and optimize marketing campaigns for maximum ROI.</p>
                         <a href="sales-marketing.html" class="btn">Learn More</a>
                     </div>
-                </div>
+                </div> -->
                 <div class="industry-card">
                     <div class="industry-image" style="background-image: url('assets/healthcare.svg');"></div>
                     <div class="industry-content">
                         <h3>Healthcare</h3>
-                        <p>One AI Employee to Unlock Superhuman Efficiency</p>
+                        <p><strong>One AI Employee to Unlock Superhuman Efficiency</strong></p>
                         <p>Improve patient experience and tackle the shortage of healthcare workers with intelligent automation and support.</p>
-                        <a href="health-care.html" class="btn">Learn More</a>
+                        <a href="healthcare.html" class="btn">Learn More</a>
                     </div>
                 </div>
                 <div class="industry-card">
                     <div class="industry-image" style="background-image: url('assets/employee.svg');"></div>
                     <div class="industry-content">
                         <h3>Employee Experience</h3>
-                        <p>Make Every Part of the Employee Experience Delightful</p>
+                        <p><strong>Make Every Part of the Employee Experience Delightful</strong></p>
                         <p>From onboarding to retention, elevate every step of employee experience with Agentic AI solutions.</p>
                         <a href="employee-experience.html" class="btn">Learn More</a>
                     </div>
@@ -864,7 +964,7 @@
                     <div class="industry-image" style="background-image: url('assets/construction.svg');"></div>
                     <div class="industry-content">
                         <h3>Construction</h3>
-                        <p>AI quoting for wholesale and distribution and manufactures</p>
+                        <p><strong>AI quoting for wholesale and distribution and manufactures</strong></p>
                         <p>Streamline bidding processes, optimize resource allocation, and improve project management with intelligent AI solutions.</p>
                         <a href="construction.html" class="btn">Learn More</a>
                     </div>
@@ -906,20 +1006,23 @@
             </div>
             <div class="enterprise-grid">
                 <div class="enterprise-card">
-                    <h3>Custom Model Fine-tuning</h3>
-                    <p>Train AI models on your specific business data for superior performance and relevance to your unique challenges.</p>
+                    <h3>Customized Solutions</h3>
+                    <p>Tailored AI implementations designed specifically for your business needs and workflows</p>
                 </div>
                 <div class="enterprise-card">
-                    <h3>Secure Deployment</h3>
-                    <p>Implement AI solutions with enterprise-grade security protocols and compliance with regional regulations.</p>
+                    <h3>Seamless Integration</h3>
+                    <p>Smooth integration with your existing systems and data infrastructure</p>
                 </div>
                 <div class="enterprise-card">
-                    <h3>Integration Expertise</h3>
-                    <p>Seamlessly connect AI agents with your existing systems and workflows for maximum efficiency.</p>
+                    <h3>Scalable Architecture</h3>
+                    <p>Enterprise-grade architecture that scales with your business growth</p>
                 </div>
-                <div class="enterprise-card">
-                    <h3>Continuous Optimization</h3>
-                    <p>Ongoing support and model refinement to ensure your AI solutions evolve with your business needs.</p>
+            </div>
+            <div class="enterprise-image" style="margin-top: 60px; text-align: center;">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary);">Fine-Tuning Open Source Models for Private Data</h3>
+                    <p style="text-align: center; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">Leverage the power of open source foundation models while ensuring data privacy and security. Our fine-tuning process adapts models to your specific industry terminology, workflows, and requirements without compromising sensitive information.</p>
+                    <img src="assets/ai-2.jpg" alt="Fine-Tuning Open Source Models" style="max-width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(53, 50, 167, 0.15);">
                 </div>
             </div>
         </div>
@@ -963,7 +1066,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h3>Masna AI</h3>
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/logo_footer.png" alt="Masna AI Logo">
+                    </a>
                     <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through intelligent automation.</p>
                     <div class="social-icons">
                         <a href="https://www.linkedin.com/company/masna-ai/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
@@ -1007,35 +1112,44 @@
     </footer>
 
     <script>
+        // JavaScript for mobile menu functionality
         document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.querySelector('.mobile-menu-toggle');
             const mobileMenu = document.querySelector('.mobile-menu');
             const overlay = document.querySelector('.overlay');
 
-            menuToggle.addEventListener('click', function () {
-                menuToggle.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-            });
-
-            overlay.addEventListener('click', function () {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function () {
+                    mobileMenu.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll');
+                    
+                    if (overlay) {
+                        overlay.classList.toggle('active');
+                    }
+                });
+            }
 
             // Close mobile menu when clicking on a link
             const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
             mobileLinks.forEach(link => {
-                link.addEventListener('click', function () {
-                    menuToggle.classList.remove('active');
+                link.addEventListener('click', function() {
                     mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
+                    document.body.classList.remove('no-scroll');
+                    
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
                 });
             });
+
+            // Close mobile menu when clicking outside
+            if (overlay) {
+                overlay.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                    overlay.classList.remove('active');
+                });
+            }
         });
     </script>
 </body>
