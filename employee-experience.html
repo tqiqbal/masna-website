@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Masna AI - Employee Experience Solutions</title>
-    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="icon" type="image/png" href="assets/symbol.png">
     <style>
         /* Base Styles */
         :root {
-            --primary: #0066ff;
+            --primary: #3532a7;
+            --primary-light: #5452c8;
+            --primary-dark: #282686;
             --secondary: #001233;
-            --accent: #ff6b00;
+            --accent: #6c63ff;
             --light: #f5f7fa;
             --dark: #001233;
             --success: #00c853;
             --text-dark: #333;
-            --text-light: #f5f7fa;
+            --text-light: #ffffff;
             --spacing-sm: 8px;
             --spacing-md: 16px;
             --spacing-lg: 32px;
@@ -23,9 +25,9 @@
             --border-radius: 8px;
             
             /* Custom colors */
-            --light-purple: #bbabe9;
+            --light-purple: #d4d1f5;
             --light-green: #aedbbe;
-            --light-blue: #8ac5ec;
+            --light-blue: #c5c3f0;
             --light-orange: #f1dba6;
         }
 
@@ -119,13 +121,13 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--secondary);
+            display: flex;
+            align-items: center;
         }
 
-        .logo span {
-            color: var(--primary);
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
         }
 
         .nav-links {
@@ -497,6 +499,15 @@
             gap: var(--spacing-lg);
         }
 
+        .footer-logo {
+            margin-bottom: var(--spacing-md);
+            display: block;
+        }
+
+        .footer-logo img {
+            height: 50px;
+        }
+
         .footer h3 {
             color: white;
             margin-bottom: var(--spacing-md);
@@ -731,7 +742,9 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">Masna<span> AI</span></a>
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="Masna AI Logo">
+            </a>
 
             <!-- Desktop Navigation -->
             <ul class="nav-links">
@@ -1147,7 +1160,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h3>Masna AI</h3>
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/logo_white.png" alt="Masna AI Logo">
+                    </a>
                     <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through intelligent automation.</p>
                 </div>
                 <div>
