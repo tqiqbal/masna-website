@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Masna AI - Leading Agentic AI Solutions in the Middle East</title>
     <link rel="icon" type="image/png" href="assets/symbol.png">
-        <!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         /* Base Styles */
         :root {
@@ -34,7 +35,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -43,7 +44,12 @@
             background-color: var(--light);
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: var(--spacing-md);
@@ -135,6 +141,10 @@
             gap: 30px;
         }
 
+        .nav-links>li {
+            position: relative;
+        }
+
         .nav-links a {
             color: white;
             font-weight: 600;
@@ -164,13 +174,78 @@
             width: 100%;
         }
 
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dropdown-toggle i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-toggle i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 10px 0;
+            margin-top: 10px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 8px 20px;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(53, 50, 167, 0.05);
+            color: var(--primary);
+        }
+
+        .dropdown-menu a::after {
+            display: none;
+        }
+
         .mobile-menu-toggle {
             display: none;
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
-            height: 21px;
+            height: 22px;
             cursor: pointer;
+            z-index: 1001;
         }
 
         .mobile-menu-toggle span {
@@ -182,25 +257,47 @@
             transition: all 0.3s ease;
         }
 
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
         .mobile-menu {
-            display: none;
             position: fixed;
-            top: 70px;
-            left: 0;
-            width: 100%;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
             background-color: var(--primary);
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 80px 20px 20px;
+            transition: right 0.3s ease;
             z-index: 999;
+            overflow-y: auto;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu.active {
+            right: 0;
         }
 
         .mobile-nav-links {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
         .mobile-nav-links li {
-            margin-bottom: 15px;
+            margin: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 15px;
         }
 
         .mobile-nav-links a {
@@ -209,15 +306,55 @@
             font-size: 1.1rem;
             text-decoration: none;
             display: block;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
         .mobile-nav-links a:hover {
             color: rgba(255, 255, 255, 0.8);
         }
 
-        @media (max-width: 768px) {
+        .mobile-dropdown {
+            display: none;
+            list-style: none;
+            padding: 10px 0 0 15px;
+            margin: 10px 0 0;
+        }
+
+        .mobile-dropdown.active {
+            display: block;
+        }
+
+        .mobile-dropdown li {
+            margin: 10px 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .mobile-dropdown a {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .no-scroll {
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        @media (max-width: 991px) {
             .nav-links {
                 display: none;
             }
@@ -225,23 +362,18 @@
             .mobile-menu-toggle {
                 display: flex;
             }
-
-            .mobile-menu.active {
-                display: block;
-            }
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            min-height: 85vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            background-color: #f8f9ff;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eafd 100%);
             position: relative;
             overflow: hidden;
             color: var(--text-dark);
-            padding: 80px 0;
+            padding: 100px 0;
         }
 
         .hero::before {
@@ -255,58 +387,97 @@
             z-index: 0;
         }
 
-        .hero-content {
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             position: relative;
             z-index: 1;
-            width: 100%;
-            max-width: 900px;
-            text-align: center;
-            padding: 0 20px;
+        }
+
+        .hero-content {
+            width: 55%;
+            text-align: left;
+            padding-right: 40px;
+        }
+
+        .hero-image-container {
+            width: 45%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(53, 50, 167, 0.2));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(53, 50, 167, 0.1);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 50px;
+            margin-bottom: 24px;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             line-height: 1.2;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             color: var(--primary);
             font-weight: 800;
             letter-spacing: -0.5px;
+            background: linear-gradient(to right, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             line-height: 1.6;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
             color: var(--text-dark);
             opacity: 0.9;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .hero-buttons {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
         }
 
         .hero .btn {
-            background-color: var(--primary);
-            color: white;
-            padding: 15px 35px;
-            font-size: 1.1rem;
+            padding: 14px 32px;
+            font-size: 1rem;
             font-weight: 600;
-            border-radius: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(53, 50, 167, 0.15);
             transition: all 0.3s ease;
-            border: 2px solid var(--primary);
         }
 
         .hero .btn:hover {
-            background-color: var(--primary);
-            opacity: 0.9;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(53, 50, 167, 0.2);
+            box-shadow: 0 8px 20px rgba(53, 50, 167, 0.25);
         }
 
         .hero .btn-outline {
@@ -318,57 +489,25 @@
         .hero .btn-outline:hover {
             background-color: var(--primary);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(53, 50, 167, 0.2);
         }
 
-        @media (max-width: 768px) {
-            .hero {
-                padding: 60px 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-                margin-bottom: 20px;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-                margin-bottom: 30px;
-            }
-            
-            .hero .btn {
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        @media (max-width: 480px) {
-            .hero {
-                padding: 40px 0;
-                min-height: 70vh;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-                margin-bottom: 15px;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-                margin-bottom: 25px;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-                gap: 15px;
-            }
-            
-            .hero .btn {
-                width: 100%;
-                padding: 12px 20px;
-            }
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .hero-feature i {
+            color: var(--primary);
+            font-size: 1rem;
         }
 
         /* Features */
@@ -419,9 +558,70 @@
             margin-bottom: var(--spacing-md);
         }
 
+        /* Core Capabilities */
+        .core-capabilities {
+            background-color: #f8f9ff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .core-capabilities::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at bottom left, rgba(108, 99, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: 0;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .capability-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .capability-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .capability-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: rgba(53, 50, 167, 0.1);
+            border-radius: 50%;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .capability-icon i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .capability-card h3 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
         /* Industries */
         .industries {
-            background-color: #f8f9ff;
+            background-color: white;
             color: var(--text-dark);
         }
 
@@ -479,9 +679,73 @@
             background-color: var(--primary);
         }
 
+        /* AI Models Section */
+        .ai-models {
+            background-color: #f8f9ff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-models::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(108, 99, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: 0;
+        }
+
+        .models-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .model-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            min-width: 160px;
+            transition: all 0.3s ease;
+        }
+
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .model-logo {
+            height: 60px;
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+            background-color: #f5f5f5;
+            border-radius: 50%;
+        }
+
+        .model-logo img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .model-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
         /* Enterprise Solutions */
         .enterprise {
-            background-color: #f8f9ff;
+            background-color: white;
         }
 
         .enterprise-grid {
@@ -529,7 +793,7 @@
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--primary-light);
             margin-bottom: var(--spacing-sm);
         }
 
@@ -717,22 +981,10 @@
         }
 
         /* Mobile Navigation Styles */
-        .overlay {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .overlay.active {
-            display: block;
-            opacity: 1;
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
         }
 
         @media (max-width: 992px) {
@@ -748,9 +1000,28 @@
                 display: flex;
             }
 
+            .hero .container {
+                flex-direction: column;
+            }
+
             .hero-content {
                 width: 100%;
                 text-align: center;
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+
+            .hero-image-container {
+                width: 80%;
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-features {
+                justify-content: center;
             }
 
             .hero h1 {
@@ -759,18 +1030,27 @@
 
             .features-grid,
             .industry-cards,
-            .enterprise-grid {
+            .enterprise-grid,
+            .capabilities-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+            }
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
+            }
+
+            .hero-image-container {
+                width: 100%;
             }
 
             .section {
@@ -780,7 +1060,8 @@
             .features-grid,
             .industry-cards,
             .enterprise-grid,
-            .stats-grid {
+            .stats-grid,
+            .capabilities-grid {
                 grid-template-columns: 1fr;
                 gap: var(--spacing-md);
             }
@@ -789,9 +1070,37 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            
+
             .social-icons {
                 justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero .btn {
+                width: 100%;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -815,14 +1124,15 @@
 
             .feature-card,
             .industry-card,
-            .enterprise-card {
+            .enterprise-card,
+            .capability-card {
                 padding: var(--spacing-md);
             }
 
             .industry-image {
                 height: 160px;
             }
-            
+
             .section-header h2 {
                 font-size: 2rem;
             }
@@ -833,6 +1143,8 @@
 </head>
 
 <body>
+    <!-- Overlay for mobile menu -->
+    <div class="overlay"></div>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
@@ -843,8 +1155,24 @@
             <!-- Desktop Navigation -->
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#industries">Industries</a></li>
-                <li><a href="#enterprise">Enterprise</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Solutions <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="sales-marketing.html">Sales & Marketing</a></li>
+                        <li><a href="healthcare.html">Healthcare</a></li>
+                        <li><a href="employee-experience.html">Employee Experience</a></li>
+                        <li><a href="construction.html">Construction</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Technology <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#core-capabilities">Core Capabilities</a></li>
+                        <li><a href="#ai-models">AI Models</a></li>
+                        <li><a href="#enterprise">Enterprise AI</a></li>
+                        <li><a href="ai-safety.html">AI Safety</a></li>
+                    </ul>
+                </li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -862,65 +1190,170 @@
     <div class="mobile-menu">
         <ul class="mobile-nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#industries">Industries</a></li>
-            <li><a href="#enterprise">Enterprise</a></li>
+            <li>
+                <a href="#" class="mobile-dropdown-toggle">Solutions <i class="fas fa-chevron-down"></i></a>
+                <ul class="mobile-dropdown">
+                    <li><a href="sales-marketing.html">Sales & Marketing</a></li>
+                    <li><a href="healthcare.html">Healthcare</a></li>
+                    <li><a href="employee-experience.html">Employee Experience</a></li>
+                    <li><a href="construction.html">Construction</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="mobile-dropdown-toggle">Technology <i class="fas fa-chevron-down"></i></a>
+                <ul class="mobile-dropdown">
+                    <li><a href="#core-capabilities">Core Capabilities</a></li>
+                    <li><a href="#ai-models">AI Models</a></li>
+                    <li><a href="#enterprise">Enterprise AI</a></li>
+                    <li><a href="ai-safety.html">AI Safety</a></li>
+                </ul>
+            </li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
 
-    <!-- Overlay -->
-    <div class="overlay"></div>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Leading Agentic AI Solutions</h1>
-                <p>Masna AI empowers enterprises with intelligent agentic solutions that transform operations, enhance customer experiences, and drive sustainable growth.</p>
+                <span class="hero-badge">Leading AI Innovation in the Middle East</span>
+                <h1>Next Generation Agentic AI Solutions</h1>
+                <p>Masna AI unleashes the power of open source models with advanced RAG, agentic workflows, and edge AI
+                    to transform your enterprise operations and unlock unprecedented efficiency.</p>
                 <div class="hero-buttons">
-                    <a href="contact.html" class="btn">Get Started</a>
-                    <a href="#industries" class="btn btn-outline">Explore Solutions</a>
+                    <a href="contact.html" class="btn">Schedule a Demo</a>
+                    <a href="#core-capabilities" class="btn btn-outline">Explore Our Technology</a>
+                </div>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Open Source Model Expertise</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Enterprise-Grade Security</span>
+                    </div>
+                    <div class="hero-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Industry-Specific Solutions</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="assets/hero-illustration.svg" alt="Masna AI Advanced Technologies" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Capabilities Section -->
+    <section id="core-capabilities" class="section core-capabilities">
+        <div class="container">
+            <div class="section-header">
+                <h2>Core Engineering Capabilities</h2>
+                <p>Cutting-edge AI technologies driving our innovative solutions</p>
+            </div>
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Advanced RAG Systems</h3>
+                    <p>State-of-the-art Retrieval Augmented Generation that enhances AI responses with contextual
+                        information from your enterprise knowledge base.</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Agentic Workflows</h3>
+                    <p>Intelligent AI agents that work autonomously to orchestrate complex business processes and
+                        deliver actionable results.</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Advanced Reasoning</h3>
+                    <p>Sophisticated reasoning capabilities that enable AI to solve complex problems with human-like
+                        thinking processes.</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Knowledge Extraction</h3>
+                    <p>Powerful tools that automatically extract, organize, and leverage business insights from
+                        unstructured data.</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>AI at the Edge</h3>
+                    <p>Optimized AI solutions that run directly on edge devices for faster processing, enhanced privacy,
+                        and offline capabilities.</p>
+                </div>
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>AI Safety</h3>
+                    <p>Comprehensive framework that ensures responsible AI deployment with built-in guardrails for
+                        ethical and secure operations.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="section features">
+    <!-- AI Models Section -->
+    <section id="ai-models" class="section ai-models">
         <div class="container">
             <div class="section-header">
-                <h2>Why Choose Masna AI?</h2>
-                <p>Our agentic AI solutions deliver measurable business outcomes with cutting-edge technology</p>
+                <h2>Open Source Foundation Models</h2>
+                <p>Masna AI leverages and fine-tunes the most powerful open source models</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-robot"></i></div>
-                    <h3>Advanced AI Agents</h3>
-                    <p>Purpose-built AI agents that work autonomously to solve complex business challenges</p>
+            <div class="models-container">
+                <div class="model-card">
+                    <div class="model-logo">
+                        <img src="assets/models/deep-seek-logo.png" alt="DeepSeek Logo">
+                    </div>
+                    <h4>DeepSeek v3</h4>
+                    <p>Advanced reasoning & specialized tasks</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Rapid Implementation</h3>
-                    <p>Get up and running quickly with our streamlined deployment process</p>
+                <div class="model-card">
+                    <div class="model-logo">
+                        <img src="assets/models/llama.png" alt="Llama Logo">
+                    </div>
+                    <h4>Llama</h4>
+                    <p>Versatile language understanding</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Enterprise Security</h3>
-                    <p>Industry-leading security protocols to keep your data and AI systems protected</p>
+                <div class="model-card">
+                    <div class="model-logo">
+                        <img src="assets/models/mistral-ai-logo.png" alt="Mistral Logo">
+                    </div>
+                    <h4>Mistral</h4>
+                    <p>Efficient & powerful reasoning</p>
                 </div>
-                <!-- <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Measurable Results</h3>
-                    <p>Clear metrics and KPIs to track the impact of AI on your business outcomes</p> -->
+                <div class="model-card">
+                    <div class="model-logo">
+                        <img src="assets/models/qwen-logo.png" alt="Qwen Logo">
+                    </div>
+                    <h4>Qwen</h4>
+                    <p>Multilingual capabilities</p>
+                </div>
+                <div class="model-card">
+                    <div class="model-logo">
+                        <img src="assets/models/phi.png" alt="Phi Logo">
+                    </div>
+                    <h4>Phi 4</h4>
+                    <p>Compact & high-performance</p>
                 </div>
             </div>
-            <div class="features-image" style="margin-top: 60px; text-align: center;">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary);">Building Custom AI Agents for Enterprise</h3>
-                    <p style="text-align: center; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">Our team of AI experts designs and develops tailored AI agents that integrate seamlessly with your existing workflows, automating complex tasks and delivering immediate business value.</p>
-                    <img src="assets/ai-1.jpg" alt="Building Custom AI Agents" style="max-width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(53, 50, 167, 0.15);">
-                </div>
+            <div style="text-align: center; margin-top: var(--spacing-lg);">
+                <p>Our proprietary MasnaFusion model combines the strengths of these foundation models to deliver
+                    unparalleled performance for enterprise applications.</p>
+                <a href="#" class="btn" style="margin-top: var(--spacing-md);">Learn About Our Model Architecture</a>
             </div>
         </div>
     </section>
@@ -947,7 +1380,8 @@
                     <div class="industry-content">
                         <h3>Healthcare</h3>
                         <p><strong>One AI Employee to Unlock Superhuman Efficiency</strong></p>
-                        <p>Improve patient experience and tackle the shortage of healthcare workers with intelligent automation and support.</p>
+                        <p>Improve patient experience and tackle the shortage of healthcare workers with intelligent
+                            automation and support.</p>
                         <a href="healthcare.html" class="btn">Learn More</a>
                     </div>
                 </div>
@@ -956,7 +1390,8 @@
                     <div class="industry-content">
                         <h3>Employee Experience</h3>
                         <p><strong>Make Every Part of the Employee Experience Delightful</strong></p>
-                        <p>From onboarding to retention, elevate every step of employee experience with Agentic AI solutions.</p>
+                        <p>From onboarding to retention, elevate every step of employee experience with Agentic AI
+                            solutions.</p>
                         <a href="employee-experience.html" class="btn">Learn More</a>
                     </div>
                 </div>
@@ -965,7 +1400,8 @@
                     <div class="industry-content">
                         <h3>Construction</h3>
                         <p><strong>AI quoting for wholesale and distribution and manufactures</strong></p>
-                        <p>Streamline bidding processes, optimize resource allocation, and improve project management with intelligent AI solutions.</p>
+                        <p>Streamline bidding processes, optimize resource allocation, and improve project management
+                            with intelligent AI solutions.</p>
                         <a href="construction.html" class="btn">Learn More</a>
                     </div>
                 </div>
@@ -1006,24 +1442,30 @@
             </div>
             <div class="enterprise-grid">
                 <div class="enterprise-card">
-                    <h3>Customized Solutions</h3>
-                    <p>Tailored AI implementations designed specifically for your business needs and workflows</p>
+                    <h3>Model Fine-Tuning</h3>
+                    <p>Customize foundation models with your organization's data and domain-specific knowledge to
+                        achieve superior performance on specialized tasks.</p>
+                </div>
+                <div class="enterprise-card">
+                    <h3>Secure Deployment</h3>
+                    <p>Deploy AI solutions with enterprise-grade security protocols, data sovereignty controls, and
+                        compliance with industry regulations.</p>
                 </div>
                 <div class="enterprise-card">
                     <h3>Seamless Integration</h3>
-                    <p>Smooth integration with your existing systems and data infrastructure</p>
+                    <p>Connect AI capabilities with your existing systems and workflows through our comprehensive suite
+                        of APIs and connectors.</p>
                 </div>
-                <div class="enterprise-card">
+                <!-- <div class="enterprise-card">
                     <h3>Scalable Architecture</h3>
-                    <p>Enterprise-grade architecture that scales with your business growth</p>
-                </div>
+                    <p>Enterprise-ready infrastructure designed to scale with your business needs, from small deployments to organization-wide AI adoption.</p>
+                </div> -->
             </div>
-            <div class="enterprise-image" style="margin-top: 60px; text-align: center;">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary);">Fine-Tuning Open Source Models for Private Data</h3>
-                    <p style="text-align: center; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">Leverage the power of open source foundation models while ensuring data privacy and security. Our fine-tuning process adapts models to your specific industry terminology, workflows, and requirements without compromising sensitive information.</p>
-                    <img src="assets/ai-2.jpg" alt="Fine-Tuning Open Source Models" style="max-width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(53, 50, 167, 0.15);">
-                </div>
+            <div style="text-align: center; margin-top: var(--spacing-xl);">
+                <h3 style="color: var(--primary); margin-bottom: var(--spacing-md);">Private LLM Deployment Options</h3>
+                <p style="max-width: 800px; margin: 0 auto var(--spacing-lg);">Choose from on-premises, private cloud,
+                    or hybrid deployment models to meet your security, compliance, and performance requirements.</p>
+                <a href="enterprise-solutions.html" class="btn">Explore Enterprise Solutions</a>
             </div>
         </div>
     </section>
@@ -1037,7 +1479,9 @@
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    Masna AI has revolutionized how we handle customer service. Their agentic solutions have reduced response times by 70% while improving customer satisfaction scores. The implementation was seamless, and the team's expertise in fine-tuning the model to our specific needs exceeded our expectations.
+                    Masna AI has revolutionized how we handle customer service. Their agentic solutions have reduced
+                    response times by 70% while improving customer satisfaction scores. The implementation was seamless,
+                    and the team's expertise in fine-tuning the model to our specific needs exceeded our expectations.
                 </div>
                 <div class="testimonial-author">
                     <div class="author-image">
@@ -1056,7 +1500,8 @@
     <section class="section cta">
         <div class="container">
             <h2>Ready to Transform Your Business with AI?</h2>
-            <p>Schedule a consultation with our AI experts to explore how Masna AI can drive innovation in your organization.</p>
+            <p>Schedule a consultation with our AI experts to explore how Masna AI can drive innovation in your
+                organization.</p>
             <a href="contact.html" class="btn">Contact Us Today</a>
         </div>
     </section>
@@ -1069,9 +1514,11 @@
                     <a href="index.html" class="footer-logo">
                         <img src="assets/logo_black.png" alt="Masna AI Logo">
                     </a>
-                    <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through intelligent automation.</p>
+                    <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through
+                        intelligent automation.</p>
                     <div class="social-icons">
-                        <a href="https://www.linkedin.com/company/masna-ai/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/company/masna-ai/" class="social-icon"><i
+                                class="fab fa-linkedin-in"></i></a>
                         <a href="https://x.com/MasnaAi" class="social-icon"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
@@ -1081,18 +1528,18 @@
                     <h3>Solutions</h3>
                     <ul class="footer-links">
                         <li><a href="sales-marketing.html">Sales & Marketing</a></li>
-                        <li><a href="health-care.html">Healthcare</a></li>
+                        <li><a href="healthcare.html">Healthcare</a></li>
                         <li><a href="employee-experience.html">Employee Experience</a></li>
                         <li><a href="construction.html">Construction</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3>Enterprise</h3>
+                    <h3>Technology</h3>
                     <ul class="footer-links">
-                        <li><a href="#enterprise">Model Fine-tuning</a></li>
-                        <li><a href="#enterprise">Secure Deployment</a></li>
-                        <li><a href="#enterprise">Integration</a></li>
-                        <li><a href="#enterprise">Consulting</a></li>
+                        <li><a href="#core-capabilities">Core Capabilities</a></li>
+                        <li><a href="#ai-models">AI Models</a></li>
+                        <li><a href="#enterprise">Enterprise AI</a></li>
+                        <li><a href="ai-safety.html">AI Safety</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1117,25 +1564,38 @@
             const menuToggle = document.querySelector('.mobile-menu-toggle');
             const mobileMenu = document.querySelector('.mobile-menu');
             const overlay = document.querySelector('.overlay');
+            const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
+            // Mobile menu toggle
             if (menuToggle) {
                 menuToggle.addEventListener('click', function () {
+                    menuToggle.classList.toggle('active');
                     mobileMenu.classList.toggle('active');
                     document.body.classList.toggle('no-scroll');
-                    
+
                     if (overlay) {
                         overlay.classList.toggle('active');
                     }
                 });
             }
 
+            // Mobile dropdown toggles
+            mobileDropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                    const dropdown = this.nextElementSibling;
+                    dropdown.classList.toggle('active');
+                });
+            });
+
             // Close mobile menu when clicking on a link
-            const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a:not(.mobile-dropdown-toggle)');
             mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function () {
                     mobileMenu.classList.remove('active');
                     document.body.classList.remove('no-scroll');
-                    
+
                     if (overlay) {
                         overlay.classList.remove('active');
                     }
@@ -1144,13 +1604,34 @@
 
             // Close mobile menu when clicking outside
             if (overlay) {
-                overlay.addEventListener('click', function() {
+                overlay.addEventListener('click', function () {
+                    menuToggle.classList.remove('active');
                     mobileMenu.classList.remove('active');
                     document.body.classList.remove('no-scroll');
                     overlay.classList.remove('active');
                 });
             }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (this.getAttribute('href') !== '#') {
+                        e.preventDefault();
+
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
         });
     </script>
 </body>
+
 </html>
