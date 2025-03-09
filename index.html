@@ -14,21 +14,21 @@
     <style>
         /* Base Styles */
         :root {
-            --primary: #3532a7;
-            --primary-light: #5452c8;
-            --primary-dark: #282686;
-            --secondary: #001233;
-            --accent: #6c63ff;
-            --light: #f5f7fa;
-            --dark: #001233;
-            --text-dark: #333;
-            --text-light: #ffffff;
+            --primary: #efd1a8;
+            --primary-light: #f7e8d3;
+            --primary-dark: #cccccc;
+            --secondary: #1a1a1a;
+            --accent: #efd1a8;
+            --light: #fffffe;
+            --dark: #1a1a1a;
+            --text-dark: #000000;
+            --text-light: #fffffe;
             --spacing-sm: 8px;
             --spacing-md: 16px;
             --spacing-lg: 32px;
             --spacing-xl: 64px;
             --border-radius: 8px;
-            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -76,8 +76,8 @@
             display: inline-block;
             padding: 12px 24px;
             background-color: var(--primary);
-            color: white;
-            border-radius: var(--border-radius);
+            color: var(--dark);
+            border-radius: 30px;
             font-weight: 600;
             transition: all 0.3s ease;
             border: none;
@@ -87,7 +87,7 @@
         .btn:hover {
             background-color: var(--accent);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(239, 209, 168, 0.3);
         }
 
         .btn-outline {
@@ -98,22 +98,66 @@
 
         .btn-outline:hover {
             background-color: var(--primary);
-            color: white;
+            color: var(--dark);
+        }
+
+        .hero .btn-outline {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px solid var(--dark);
+            color: var(--dark);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero .btn-outline:hover {
+            background-color: var(--dark);
+            color: var(--light);
+            border-color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
 
         .section {
             padding: var(--spacing-xl) 0;
+            position: relative;
         }
 
-        .text-center {
+        .section-header {
             text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-xl);
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 5px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
         }
 
         /* Navbar */
         .navbar {
             padding: 15px 0;
-            background-color: var(--primary);
-            box-shadow: 0 5px 20px rgba(53, 50, 167, 0.3);
+            background-color: var(--light);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -146,7 +190,7 @@
         }
 
         .nav-links a {
-            color: white;
+            color: var(--dark);
             font-weight: 600;
             font-size: 1rem;
             text-decoration: none;
@@ -156,7 +200,7 @@
         }
 
         .nav-links a:hover {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--primary);
         }
 
         .nav-links a::after {
@@ -166,7 +210,7 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: white;
+            background-color: var(--primary);
             transition: width 0.3s ease;
         }
 
@@ -198,7 +242,7 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: white;
+            background-color: var(--light);
             min-width: 220px;
             border-radius: var(--border-radius);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -230,7 +274,7 @@
         }
 
         .dropdown-menu a:hover {
-            background-color: rgba(53, 50, 167, 0.05);
+            background-color: rgba(239, 209, 168, 0.1);
             color: var(--primary);
         }
 
@@ -243,17 +287,16 @@
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
-            height: 22px;
+            height: 21px;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 1002;
         }
 
         .mobile-menu-toggle span {
             display: block;
-            height: 3px;
             width: 100%;
-            background-color: white;
-            border-radius: 3px;
+            height: 3px;
+            background-color: var(--dark);
             transition: all 0.3s ease;
         }
 
@@ -272,14 +315,13 @@
         .mobile-menu {
             position: fixed;
             top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 320px;
+            right: -300px;
+            width: 300px;
             height: 100vh;
-            background-color: var(--primary);
+            background-color: var(--light);
             padding: 80px 20px 20px;
             transition: right 0.3s ease;
-            z-index: 999;
+            z-index: 1001;
             overflow-y: auto;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         }
@@ -296,28 +338,27 @@
 
         .mobile-nav-links li {
             margin: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(239, 209, 168, 0.2);
             padding-bottom: 15px;
         }
 
         .mobile-nav-links a {
-            color: white;
+            display: block;
+            padding: 15px 20px;
+            color: var(--dark);
             font-weight: 600;
             font-size: 1.1rem;
-            text-decoration: none;
-            display: block;
             transition: all 0.3s ease;
         }
 
         .mobile-nav-links a:hover {
-            color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(239, 209, 168, 0.1);
         }
 
         .mobile-dropdown {
             display: none;
-            list-style: none;
-            padding: 10px 0 0 15px;
-            margin: 10px 0 0;
+            background-color: rgba(239, 209, 168, 0.1);
+            padding: 10px 0;
         }
 
         .mobile-dropdown.active {
@@ -366,14 +407,11 @@
 
         /* Hero */
         .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #f8f9ff 0%, #e8eafd 100%);
             position: relative;
+            padding: 120px 0 100px;
             overflow: hidden;
-            color: var(--text-dark);
-            padding: 100px 0;
+            background: linear-gradient(135deg, #f7e8d3 0%, #efd1a8 100%);
+            border-radius: 0 0 100px 0;
         }
 
         .hero::before {
@@ -381,175 +419,92 @@
             position: absolute;
             top: 0;
             right: 0;
-            width: 100%;
+            width: 60%;
             height: 100%;
-            background: radial-gradient(circle at top right, rgba(108, 99, 255, 0.1) 0%, rgba(53, 50, 167, 0.05) 50%, rgba(255, 255, 255, 0) 100%);
+            background-image: url('assets/pattern.png');
+            background-size: cover;
+            opacity: 0.05;
             z-index: 0;
         }
 
-        .hero .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .hero-content {
             position: relative;
             z-index: 1;
-        }
-
-        .hero-content {
-            width: 55%;
-            text-align: left;
-            padding-right: 40px;
-        }
-
-        .hero-image-container {
-            width: 45%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        .hero-image {
-            max-width: 100%;
-            height: auto;
-            filter: drop-shadow(0 10px 20px rgba(53, 50, 167, 0.2));
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background-color: rgba(53, 50, 167, 0.1);
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 8px 16px;
-            border-radius: 50px;
-            margin-bottom: 24px;
+            max-width: 650px;
+            margin-left: 0;
+            margin-right: auto;
         }
 
         .hero h1 {
             font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            color: var(--primary);
             font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(to right, var(--primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-md);
+            color: var(--dark);
         }
 
         .hero p {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            margin-bottom: 32px;
-            color: var(--text-dark);
-            opacity: 0.9;
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-secondary);
         }
 
         .hero-buttons {
             display: flex;
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .hero .btn {
-            padding: 14px 32px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(53, 50, 167, 0.15);
-            transition: all 0.3s ease;
-        }
-
-        .hero .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(53, 50, 167, 0.25);
-        }
-
-        .hero .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .hero .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
         }
 
         .hero-features {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: var(--spacing-md);
         }
 
         .hero-feature {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.95rem;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 8px 16px;
+            border-radius: 30px;
             font-weight: 500;
         }
 
         .hero-feature i {
-            color: var(--primary);
-            font-size: 1rem;
+            color: var(--dark);
         }
 
         /* Features */
         .features {
-            background-color: white;
+            background-color: var(--light);
+            position: relative;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
+        .features .section-header {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto var(--spacing-xl);
+            text-align: center;
         }
 
-        .features-grid {
+        .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--spacing-lg);
-            margin-top: var(--spacing-lg);
         }
 
         .feature-card {
-            padding: var(--spacing-lg);
+            background-color: var(--light);
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            background-color: white;
-            border-top: 4px solid var(--primary);
+            border-left: 4px solid var(--primary);
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         }
 
         .feature-icon {
@@ -560,69 +515,59 @@
 
         /* Core Capabilities */
         .core-capabilities {
-            background-color: #f8f9ff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .core-capabilities::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at bottom left, rgba(108, 99, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: 0;
-        }
-
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
+            background-color: var(--light);
             position: relative;
             z-index: 1;
         }
 
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
         .capability-card {
-            background-color: white;
+            background-color: var(--light);
             border-radius: var(--border-radius);
             padding: var(--spacing-lg);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             border-left: 4px solid var(--primary);
         }
 
         .capability-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
         }
 
         .capability-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             width: 60px;
             height: 60px;
-            background-color: rgba(53, 50, 167, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(239, 209, 168, 0.1);
             border-radius: 50%;
             margin-bottom: var(--spacing-md);
-        }
-
-        .capability-icon i {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--primary);
         }
 
         .capability-card h3 {
-            color: var(--primary);
+            font-size: 1.3rem;
             margin-bottom: var(--spacing-sm);
+        }
+
+        .capability-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
         }
 
         /* Industries */
         .industries {
-            background-color: white;
-            color: var(--text-dark);
+            background-color: var(--light);
+            position: relative;
+            z-index: 1;
         }
 
         .industries .section-header h2 {
@@ -635,66 +580,60 @@
         }
 
         .industry-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xl);
         }
 
         .industry-card {
-            background-color: white;
+            display: flex;
+            background-color: var(--light);
             border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            color: var(--text-dark);
             border-left: 4px solid var(--primary);
         }
 
         .industry-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
         }
 
         .industry-image {
-            height: 200px;
+            flex: 0 0 300px;
             background-size: cover;
             background-position: center;
+            position: relative;
         }
 
         .industry-content {
+            flex: 1;
             padding: var(--spacing-lg);
         }
 
-        .industry-card h3 {
-            color: var(--primary);
+        .industry-content h3 {
+            font-size: 1.5rem;
             margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
         }
 
-        .industry-card p {
+        .industry-content p {
             margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
         }
 
-        .industry-card .btn {
-            background-color: var(--primary);
+        .industry-content strong {
+            color: var(--dark);
         }
 
         /* AI Models Section */
         .ai-models {
-            background-color: #f8f9ff;
+            background-color: var(--primary-light);
             position: relative;
-            overflow: hidden;
-        }
-
-        .ai-models::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(108, 99, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: 0;
+            padding: var(--spacing-xl) 0;
+            border-radius: 100px 0 0 0;
+            margin-top: 50px;
         }
 
         .models-container {
@@ -702,104 +641,262 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: var(--spacing-lg);
-            position: relative;
-            z-index: 1;
+            margin-top: var(--spacing-xl);
         }
 
         .model-card {
-            background-color: white;
+            background-color: var(--light);
             border-radius: var(--border-radius);
-            padding: var(--spacing-md);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             text-align: center;
-            min-width: 160px;
+            width: 200px;
             transition: all 0.3s ease;
         }
 
         .model-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .model-logo {
-            height: 60px;
-            width: 60px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto var(--spacing-md);
-            background-color: #f5f5f5;
-            border-radius: 50%;
+            margin-bottom: var(--spacing-md);
         }
 
         .model-logo img {
-            max-width: 80%;
-            max-height: 80%;
+            max-height: 60px;
+            max-width: 100%;
         }
 
         .model-card h4 {
             font-size: 1.1rem;
             margin-bottom: 5px;
-            color: var(--primary);
+        }
+
+        .model-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
         /* Enterprise Solutions */
-        .enterprise {
-            background-color: white;
+        .enterprise-solutions {
+            background-color: var(--primary-light);
+            position: relative;
+            padding: var(--spacing-xl) 0;
+            border-radius: 0 0 0 100px;
+            margin-bottom: 50px;
         }
 
-        .enterprise-grid {
+        .enterprise-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: var(--spacing-lg);
-            margin-top: var(--spacing-lg);
         }
 
-        .enterprise-card {
-            background-color: white;
+        .enterprise-feature {
+            background-color: var(--light);
             border-radius: var(--border-radius);
             padding: var(--spacing-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             border-left: 4px solid var(--primary);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
         }
 
-        .enterprise-card:hover {
+        .enterprise-feature:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .enterprise-card h3 {
+        .enterprise-feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .enterprise-feature h3 i {
             color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .enterprise-feature p {
+            color: var(--text-secondary);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--light);
+            padding: var(--spacing-xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            background-image: url('assets/pattern.png');
+            background-size: cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .testimonial-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: var(--spacing-lg);
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 6rem;
+            color: var(--primary);
+            opacity: 0.2;
+            line-height: 1;
+            font-family: 'Georgia', serif;
+        }
+
+        .testimonial-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-dark);
+            font-style: italic;
+            padding-left: 40px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .testimonial-author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            color: var(--text-dark);
+        }
+
+        .testimonial-author-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            position: relative;
+            background: linear-gradient(135deg, #efd1a8 0%, #f7e8d3 100%);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            border-radius: 100px 0 0 0;
+            margin-top: 50px;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40%;
+            height: 100%;
+            background-image: url('assets/pattern.png');
+            background-size: cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-md);
+            color: var(--dark);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-secondary);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+
+        .cta-buttons .btn {
+            padding: 14px 30px;
+            font-size: 1.1rem;
         }
 
         /* Stats Section */
         .stats {
-            background-color: var(--secondary);
-            color: white;
+            background-color: var(--dark);
+            color: var(--text-light);
             padding: var(--spacing-xl) 0;
+            border-radius: 0 100px 0 0;
+            margin-top: 50px;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: var(--spacing-lg);
-        }
-
-        .stat-item {
             text-align: center;
         }
 
         .stat-number {
             font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary-light);
+            font-weight: 800;
+            color: var(--primary);
             margin-bottom: var(--spacing-sm);
         }
 
         .stat-label {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         /* Testimonials */
@@ -808,10 +905,10 @@
         }
 
         .testimonial-card {
-            background-color: white;
+            background-color: var(--light);
             border-radius: var(--border-radius);
             padding: var(--spacing-lg);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
             margin: 0 auto;
             max-width: 800px;
         }
@@ -829,8 +926,8 @@
             position: absolute;
             top: -20px;
             left: -15px;
-            color: var(--primary-light);
-            opacity: 0.3;
+            color: var(--primary);
+            opacity: 0.5;
             font-family: Georgia, serif;
         }
 
@@ -865,12 +962,12 @@
         /* CTA */
         .cta {
             background-color: var(--primary);
-            color: white;
+            color: var(--dark);
             text-align: center;
         }
 
         .cta h2 {
-            color: white;
+            color: var(--dark);
         }
 
         .cta p {
@@ -882,22 +979,22 @@
         }
 
         .cta .btn {
-            background-color: white;
-            color: var(--primary);
+            background-color: var(--light);
+            color: var(--dark);
             margin-top: var(--spacing-md);
         }
 
         .cta .btn:hover {
-            background-color: var(--accent);
-            color: white;
+            background-color: var(--secondary);
+            color: var(--light);
         }
 
         /* Footer */
         .footer {
-            background-color: #f8f9ff;
-            color: #333;
+            background-color: var(--light);
+            color: var(--text-dark);
             padding: 60px 0;
-            border-top: 1px solid rgba(53, 50, 167, 0.1);
+            border-top: 1px solid rgba(239, 209, 168, 0.2);
         }
 
         .footer-grid {
@@ -918,7 +1015,7 @@
         .footer h3 {
             font-size: 1.2rem;
             margin-bottom: 20px;
-            color: var(--primary);
+            color: var(--dark);
             font-weight: 600;
         }
 
@@ -931,7 +1028,7 @@
         }
 
         .footer-links a {
-            color: #555;
+            color: var(--text-dark);
             transition: all 0.3s ease;
             font-weight: 500;
         }
@@ -943,7 +1040,7 @@
         .copyright {
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid rgba(53, 50, 167, 0.1);
+            border-top: 1px solid rgba(239, 209, 168, 0.2);
             text-align: center;
             color: #777;
         }
@@ -961,7 +1058,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: rgba(53, 50, 167, 0.1);
+            background-color: rgba(239, 209, 168, 0.2);
             border-radius: 50%;
             transition: all 0.3s ease;
         }
@@ -972,12 +1069,12 @@
         }
 
         .social-icon i {
-            color: var(--primary);
+            color: var(--dark);
             font-size: 1.2rem;
         }
 
         .social-icon:hover i {
-            color: white;
+            color: var(--dark);
         }
 
         /* Mobile Navigation Styles */
@@ -1149,7 +1246,7 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="Masna AI Logo">
+                <img src="assets/logo_black.png" alt="Masna AI Logo">
             </a>
 
             <!-- Desktop Navigation -->
@@ -1217,10 +1314,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-badge">Leading AI Innovation in the Middle East</span>
-                <h1>Next Generation Agentic AI Solutions</h1>
-                <p>Masna AI unleashes the power of open source models with advanced RAG, agentic workflows, and edge AI
-                    to transform your enterprise operations and unlock unprecedented efficiency.</p>
+                <h1>Agentic AI for Enterprise Transformation</h1>
+                <p>Masna AI delivers cutting-edge agentic AI solutions tailored for enterprises in the Middle East, transforming business processes with intelligent automation.</p>
                 <div class="hero-buttons">
                     <a href="contact.html" class="btn">Schedule a Demo</a>
                     <a href="#core-capabilities" class="btn btn-outline">Explore Our Technology</a>
@@ -1239,9 +1334,6 @@
                         <span>Industry-Specific Solutions</span>
                     </div>
                 </div>
-            </div>
-            <div class="hero-image-container">
-                <img src="assets/hero-illustration.svg" alt="Masna AI Advanced Technologies" class="hero-image">
             </div>
         </div>
     </section>
@@ -1434,29 +1526,29 @@
     </section>
 
     <!-- Enterprise Section -->
-    <section id="enterprise" class="section enterprise">
+    <section id="enterprise" class="section enterprise-solutions">
         <div class="container">
             <div class="section-header">
                 <h2>Enterprise AI Adoption</h2>
                 <p>Empowering enterprises with secure, customized AI deployment</p>
             </div>
-            <div class="enterprise-grid">
-                <div class="enterprise-card">
+            <div class="enterprise-features">
+                <div class="enterprise-feature">
                     <h3>Model Fine-Tuning</h3>
                     <p>Customize foundation models with your organization's data and domain-specific knowledge to
                         achieve superior performance on specialized tasks.</p>
                 </div>
-                <div class="enterprise-card">
+                <div class="enterprise-feature">
                     <h3>Secure Deployment</h3>
                     <p>Deploy AI solutions with enterprise-grade security protocols, data sovereignty controls, and
                         compliance with industry regulations.</p>
                 </div>
-                <div class="enterprise-card">
+                <div class="enterprise-feature">
                     <h3>Seamless Integration</h3>
                     <p>Connect AI capabilities with your existing systems and workflows through our comprehensive suite
                         of APIs and connectors.</p>
                 </div>
-                <!-- <div class="enterprise-card">
+                <!-- <div class="enterprise-feature">
                     <h3>Scalable Architecture</h3>
                     <p>Enterprise-ready infrastructure designed to scale with your business needs, from small deployments to organization-wide AI adoption.</p>
                 </div> -->
@@ -1477,19 +1569,21 @@
                 <h2>What Our Clients Say</h2>
                 <p>Hear from organizations that have transformed their operations with Masna AI</p>
             </div>
-            <div class="testimonial-card">
-                <div class="testimonial-text">
-                    Masna AI has revolutionized how we handle customer service. Their agentic solutions have reduced
-                    response times by 70% while improving customer satisfaction scores. The implementation was seamless,
-                    and the team's expertise in fine-tuning the model to our specific needs exceeded our expectations.
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-image">
-                        <img src="assets/testimonial-avatar.png" alt="Ahmed Al Rashidi">
+            <div class="testimonial-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        Masna AI has revolutionized how we handle customer service. Their agentic solutions have reduced
+                        response times by 70% while improving customer satisfaction scores. The implementation was seamless,
+                        and the team's expertise in fine-tuning the model to our specific needs exceeded our expectations.
                     </div>
-                    <div class="author-info">
-                        <h4>Ahmed Al Rashidi</h4>
-                        <p>CTO, Gulf Technologies</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-image">
+                            <img src="assets/testimonial-avatar.png" alt="Ahmed Al Rashidi">
+                        </div>
+                        <div class="testimonial-author-info">
+                            <h4>Ahmed Al Rashidi</h4>
+                            <p>CTO, Gulf Technologies</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1497,12 +1591,16 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="section cta">
+    <section class="section cta-section">
         <div class="container">
-            <h2>Ready to Transform Your Business with AI?</h2>
-            <p>Schedule a consultation with our AI experts to explore how Masna AI can drive innovation in your
-                organization.</p>
-            <a href="contact.html" class="btn">Contact Us Today</a>
+            <div class="cta-content">
+                <h2>Ready to Transform Your Business with AI?</h2>
+                <p>Schedule a consultation with our AI experts to explore how Masna AI can drive innovation in your
+                    organization.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn">Contact Us Today</a>
+                </div>
+            </div>
         </div>
     </section>
 

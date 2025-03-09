@@ -1,40 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Masna AI - AI Safety & Responsible AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Safety & Responsibility - Masna AI</title>
     <link rel="icon" type="image/png" href="assets/symbol.png">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* Base Styles */
         :root {
-            --primary: #3532a7;
-            --primary-light: #5452c8;
-            --primary-dark: #282686;
-            --secondary: #001233;
-            --accent: #6c63ff;
-            --light: #f5f7fa;
-            --dark: #001233;
-            --text-dark: #333;
-            --text-light: #ffffff;
+            --primary: #efd1a8;
+            --primary-light: #f7e8d3;
+            --primary-dark: #cccccc;
+            --secondary: #1a1a1a;
+            --accent: #efd1a8;
+            --light: #fffffe;
+            --dark: #1a1a1a;
+            --success: #00c853;
+            --text-dark: #000000;
+            --text-light: #fffffe;
+            --text-secondary: #1a1a1a;
             --spacing-sm: 8px;
             --spacing-md: 16px;
             --spacing-lg: 32px;
             --spacing-xl: 64px;
-            --border-radius: 8px;
-            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --border-radius: 30px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -44,19 +40,20 @@
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
+            font-weight: 600;
             line-height: 1.2;
             margin-bottom: var(--spacing-md);
+            color: var(--text-dark);
         }
 
         a {
             text-decoration: none;
-            color: var(--primary);
+            color: var(--secondary);
             transition: all 0.3s ease;
         }
 
         a:hover {
-            color: var(--accent);
+            color: var(--primary);
         }
 
         .container {
@@ -70,7 +67,7 @@
             display: inline-block;
             padding: 12px 24px;
             background-color: var(--primary);
-            color: white;
+            color: var(--secondary);
             border-radius: var(--border-radius);
             font-weight: 600;
             transition: all 0.3s ease;
@@ -79,7 +76,8 @@
         }
 
         .btn:hover {
-            background-color: var(--accent);
+            background-color: var(--secondary);
+            color: var(--light);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -87,12 +85,12 @@
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--primary);
-            color: var(--primary);
+            color: var(--secondary);
         }
 
         .btn-outline:hover {
             background-color: var(--primary);
-            color: white;
+            color: var(--secondary);
         }
 
         .section {
@@ -105,9 +103,9 @@
 
         /* Navbar */
         .navbar {
-            padding: 15px 0;
-            background-color: var(--primary);
-            box-shadow: 0 5px 20px rgba(53, 50, 167, 0.3);
+            padding: var(--spacing-md) 0;
+            background-color: var(--light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -132,40 +130,17 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 30px;
-        }
-
-        .nav-links > li {
-            position: relative;
+            gap: var(--spacing-md);
         }
 
         .nav-links a {
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            position: relative;
-            padding: 5px 0;
-            transition: all 0.3s ease;
+            color: var(--text-dark);
+            font-weight: 500;
         }
 
-        .nav-links a:hover {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
         }
 
         /* Dropdown Menu */
@@ -192,7 +167,7 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: white;
+            background-color: var(--light);
             min-width: 220px;
             border-radius: var(--border-radius);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -224,14 +199,11 @@
         }
 
         .dropdown-menu a:hover {
-            background-color: rgba(53, 50, 167, 0.05);
-            color: var(--primary);
+            background-color: var(--primary-light);
+            color: var(--secondary);
         }
 
-        .dropdown-menu a::after {
-            display: none;
-        }
-
+        /* Mobile Menu */
         .mobile-menu-toggle {
             display: none;
             flex-direction: column;
@@ -245,418 +217,81 @@
             display: block;
             height: 3px;
             width: 100%;
-            background-color: white;
+            background-color: var(--secondary);
             border-radius: 3px;
             transition: all 0.3s ease;
         }
 
         .mobile-menu {
-            display: none;
             position: fixed;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            background-color: var(--primary);
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            z-index: 999;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background-color: var(--light);
+            z-index: 1001;
+            padding: var(--spacing-xl) var(--spacing-md);
+            transition: all 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary);
         }
 
         .mobile-nav-links {
             list-style: none;
-            padding: 0;
-        }
-
-        .mobile-nav-links li {
-            margin-bottom: 15px;
-        }
-
-        .mobile-nav-links a {
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-decoration: none;
-            display: block;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-nav-links a:hover {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .mobile-dropdown {
-            margin-top: 10px;
-            display: none;
-            padding-left: 20px;
-        }
-
-        .mobile-dropdown.active {
-            display: block;
-        }
-
-        .mobile-dropdown-toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .mobile-dropdown-toggle i {
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-dropdown-toggle.active i {
-            transform: rotate(180deg);
-        }
-
-        /* Page Header */
-        .page-header {
-            background-color: var(--secondary);
-            color: white;
-            padding: 100px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('assets/header-pattern.svg');
-            background-size: cover;
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .page-header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 3.5rem;
-            margin-bottom: var(--spacing-md);
-            color: white;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Safety Framework Section */
-        .safety-framework {
-            background-color: white;
-        }
-
-        .framework-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-lg);
-        }
-
-        .framework-card {
-            background-color: var(--light);
-            border-radius: var(--border-radius);
-            padding: var(--spacing-lg);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border-top: 4px solid var(--primary);
-        }
-
-        .framework-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .framework-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: var(--spacing-md);
-        }
-
-        /* Safety Principles */
-        .safety-principles {
-            background-color: #f8f9ff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .safety-principles::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at bottom left, rgba(108, 99, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: 0;
-        }
-
-        .principles-container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .principle-item {
-            display: flex;
-            gap: var(--spacing-lg);
-            margin-bottom: var(--spacing-xl);
-            align-items: flex-start;
-        }
-
-        .principle-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .principle-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1;
-            flex-shrink: 0;
-            opacity: 0.3;
-        }
-
-        .principle-content h3 {
-            color: var(--primary);
-            margin-bottom: var(--spacing-sm);
-            font-size: 1.5rem;
-        }
-
-        /* Implementation Section */
-        .implementation {
-            background-color: white;
-        }
-
-        .implementation-steps {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
             margin-top: var(--spacing-xl);
         }
 
-        .implementation-steps::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: rgba(53, 50, 167, 0.1);
-            z-index: 0;
-        }
-
-        .implementation-step {
-            position: relative;
-            z-index: 1;
-            width: 20%;
-            text-align: center;
-            padding: 0 var(--spacing-sm);
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto var(--spacing-md);
-        }
-
-        .implementation-step h3 {
-            margin-bottom: var(--spacing-sm);
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        /* Safety Benefits */
-        .safety-benefits {
-            background-color: #f8f9ff;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-lg);
-        }
-
-        .benefit-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: var(--spacing-lg);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
+        .mobile-nav-links li {
             margin-bottom: var(--spacing-md);
         }
 
-        /* CTA */
-        .cta {
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-        }
-
-        .cta h2 {
-            color: white;
-        }
-
-        .cta p {
-            margin-bottom: var(--spacing-lg);
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: white;
-            color: var(--primary);
-            margin-top: var(--spacing-md);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: white;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: #f8f9ff;
-            color: #333;
-            padding: 60px 0;
-            border-top: 1px solid rgba(53, 50, 167, 0.1);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-        }
-
-        .footer-logo {
-            margin-bottom: 20px;
+        .mobile-nav-links a {
             display: block;
-        }
-
-        .footer-logo img {
-            height: 50px;
-        }
-
-        .footer h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
+            font-size: 1.1rem;
             font-weight: 600;
+            color: var(--text-dark);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--primary-light);
         }
 
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: #555;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .footer-links a:hover {
+        .mobile-nav-links a:hover {
             color: var(--primary);
         }
 
-        .copyright {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(53, 50, 167, 0.1);
-            text-align: center;
-            color: #777;
-        }
-
-        /* Social Media Icons */
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(53, 50, 167, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .social-icon i {
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .social-icon:hover i {
-            color: white;
-        }
-
-        /* Mobile Navigation Styles */
         .overlay {
             position: fixed;
             top: 0;
-            right: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
+            z-index: 1000;
             display: none;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -667,85 +302,334 @@
             opacity: 1;
         }
 
-        @media (max-width: 992px) {
-            .navbar .container {
-                position: relative;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-
-            .framework-grid,
-            .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .implementation-steps {
-                flex-direction: column;
-                gap: var(--spacing-lg);
-            }
-
-            .implementation-steps::before {
-                display: none;
-            }
-
-            .implementation-step {
-                width: 100%;
-            }
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary-light);
+            padding: var(--spacing-xl) 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
-            .section {
-                padding: var(--spacing-lg) 0;
-            }
-
-            .framework-grid,
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: var(--spacing-md);
-            }
-
-            .principle-item {
-                flex-direction: column;
-                gap: var(--spacing-sm);
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .social-icons {
-                justify-content: center;
-            }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
         }
 
-        @media (max-width: 480px) {
-            .page-header h1 {
-                font-size: 1.75rem;
-            }
+        .hero-text {
+            flex: 1;
+        }
 
-            .btn {
-                width: 100%;
-            }
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-dark);
+        }
 
-            .framework-card,
-            .benefit-card {
-                padding: var(--spacing-md);
-            }
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-secondary);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Safety Principles */
+        .safety-principles {
+            background-color: var(--light);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .principle-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .principle-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-light);
+            color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+            font-size: 1.5rem;
+        }
+
+        .principle-card h3 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Safety Framework */
+        .safety-framework {
+            background-color: var(--primary-light);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .framework-content {
+            display: flex;
+            gap: var(--spacing-xl);
+            align-items: center;
+            margin-top: var(--spacing-lg);
+        }
+
+        .framework-image {
+            flex: 1;
+        }
+
+        .framework-image img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .framework-text {
+            flex: 1;
+        }
+
+        .framework-steps {
+            margin-top: var(--spacing-lg);
+        }
+
+        .framework-step {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary);
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: flex-start;
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            border-radius: 50%;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            margin-bottom: var(--spacing-sm);
+            color: var(--secondary);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: var(--light);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .benefit-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-light);
+            color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+            font-size: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Case Studies */
+        .case-studies {
+            background-color: var(--primary-light);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .case-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--primary);
+        }
+
+        .case-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .case-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .case-card:hover .case-image img {
+            transform: scale(1.05);
+        }
+
+        .case-content {
+            padding: var(--spacing-lg);
+        }
+
+        .case-content h3 {
+            color: var(--secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .case-content p {
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background-color: var(--primary-light);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--text-dark);
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--light);
+            color: var(--text-dark);
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-logo img {
+            height: 40px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer h3 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: var(--spacing-md);
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: var(--light);
+            color: var(--primary) !important;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            color: var(--light) !important;
+        }
+
+        .copyright {
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--primary-light);
+            color: var(--text-dark);
         }
     </style>
     <!-- Font Awesome for Icons -->
@@ -753,11 +637,13 @@
 </head>
 
 <body>
+    <!-- Overlay for mobile menu -->
+    <div class="overlay"></div>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="assets/logo.png" alt="Masna AI Logo">
+                <img src="assets/logo_black.png" alt="Masna AI Logo">
             </a>
 
             <!-- Desktop Navigation -->
@@ -778,7 +664,7 @@
                         <li><a href="index.html#core-capabilities">Core Capabilities</a></li>
                         <li><a href="index.html#ai-models">AI Models</a></li>
                         <li><a href="index.html#enterprise">Enterprise AI</a></li>
-                        <li><a href="ai-safety.html">AI Safety</a></li>
+                        <li><a href="ai-safety.html" class="active">AI Safety</a></li>
                     </ul>
                 </li>
                 <li><a href="about.html">About Us</a></li>
@@ -796,20 +682,23 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
+        <div class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </div>
         <ul class="mobile-nav-links">
             <li><a href="index.html">Home</a></li>
-            <li>
+            <li class="mobile-dropdown">
                 <a href="#" class="mobile-dropdown-toggle">Solutions <i class="fas fa-chevron-down"></i></a>
-                <ul class="mobile-dropdown">
+                <ul class="mobile-dropdown-menu">
                     <li><a href="sales-marketing.html">Sales & Marketing</a></li>
                     <li><a href="healthcare.html">Healthcare</a></li>
                     <li><a href="employee-experience.html">Employee Experience</a></li>
                     <li><a href="construction.html">Construction</a></li>
                 </ul>
             </li>
-            <li>
+            <li class="mobile-dropdown">
                 <a href="#" class="mobile-dropdown-toggle">Technology <i class="fas fa-chevron-down"></i></a>
-                <ul class="mobile-dropdown">
+                <ul class="mobile-dropdown-menu">
                     <li><a href="index.html#core-capabilities">Core Capabilities</a></li>
                     <li><a href="index.html#ai-models">AI Models</a></li>
                     <li><a href="index.html#enterprise">Enterprise AI</a></li>
@@ -820,9 +709,6 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
-
-    <!-- Overlay -->
-    <div class="overlay"></div>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -1066,71 +952,52 @@
         document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.querySelector('.mobile-menu-toggle');
             const mobileMenu = document.querySelector('.mobile-menu');
+            const closeBtn = document.querySelector('.mobile-menu-close');
             const overlay = document.querySelector('.overlay');
             const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
-            // Mobile menu toggle
-            if (menuToggle) {
-                menuToggle.addEventListener('click', function () {
-                    menuToggle.classList.toggle('active');
-                    mobileMenu.classList.toggle('active');
-                    document.body.classList.toggle('no-scroll');
-                    
-                    if (overlay) {
-                        overlay.classList.toggle('active');
-                    }
-                });
-            }
+            // Toggle mobile menu
+            menuToggle.addEventListener('click', function () {
+                mobileMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
 
-            // Mobile dropdown toggles
+            // Close mobile menu
+            closeBtn.addEventListener('click', function () {
+                mobileMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Click on overlay closes menu
+            overlay.addEventListener('click', function () {
+                mobileMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Toggle mobile dropdowns
             mobileDropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(e) {
+                toggle.addEventListener('click', function (e) {
                     e.preventDefault();
-                    this.classList.toggle('active');
+                    const parent = this.parentElement;
                     const dropdown = this.nextElementSibling;
-                    dropdown.classList.toggle('active');
-                });
-            });
-
-            // Close mobile menu when clicking on a link
-            const mobileLinks = document.querySelectorAll('.mobile-nav-links a:not(.mobile-dropdown-toggle)');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
                     
-                    if (overlay) {
-                        overlay.classList.remove('active');
-                    }
-                });
-            });
-
-            // Close mobile menu when clicking outside
-            if (overlay) {
-                overlay.addEventListener('click', function() {
-                    menuToggle.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                    overlay.classList.remove('active');
-                });
-            }
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    if (this.getAttribute('href') !== '#') {
-                        e.preventDefault();
-                        
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-                        
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 100,
-                                behavior: 'smooth'
-                            });
+                    // Close all other dropdowns
+                    document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+                        if (menu !== dropdown) {
+                            menu.style.display = 'none';
+                            menu.previousElementSibling.classList.remove('active');
                         }
-                    }
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                    this.classList.toggle('active');
                 });
             });
         });

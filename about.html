@@ -9,20 +9,21 @@
     <style>
         /* Base Styles */
         :root {
-            --primary: #3532a7;
-            --primary-light: #5452c8;
-            --primary-dark: #282686;
-            --secondary: #001233;
-            --accent: #6c63ff;
-            --light: #f5f7fa;
-            --dark: #001233;
-            --text-dark: #333;
-            --text-light: #ffffff;
+            --primary: #efd1a8;
+            --primary-light: #f7e8d3;
+            --primary-dark: #cccccc;
+            --secondary: #1a1a1a;
+            --accent: #efd1a8;
+            --light: #fffffe;
+            --dark: #1a1a1a;
+            --text-dark: #000000;
+            --text-light: #fffffe;
+            --text-secondary: #1a1a1a;
             --spacing-sm: 8px;
             --spacing-md: 16px;
             --spacing-lg: 32px;
             --spacing-xl: 64px;
-            --border-radius: 8px;
+            --border-radius: 30px;
         }
 
         * {
@@ -46,12 +47,12 @@
 
         a {
             text-decoration: none;
-            color: var(--primary);
+            color: var(--secondary);
             transition: all 0.3s ease;
         }
 
         a:hover {
-            color: var(--accent);
+            color: var(--primary);
         }
 
         .container {
@@ -65,7 +66,7 @@
             display: inline-block;
             padding: 12px 24px;
             background-color: var(--primary);
-            color: white;
+            color: var(--secondary);
             border-radius: var(--border-radius);
             font-weight: 600;
             transition: all 0.3s ease;
@@ -74,7 +75,8 @@
         }
 
         .btn:hover {
-            background-color: var(--accent);
+            background-color: var(--secondary);
+            color: var(--light);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -82,12 +84,12 @@
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--primary);
-            color: var(--primary);
+            color: var(--secondary);
         }
 
         .btn-outline:hover {
             background-color: var(--primary);
-            color: white;
+            color: var(--secondary);
         }
 
         .section {
@@ -101,7 +103,7 @@
         /* Navbar */
         .navbar {
             padding: var(--spacing-md) 0;
-            background-color: white;
+            background-color: var(--light);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
@@ -141,10 +143,12 @@
 
         /* Page Header */
         .page-header {
-            background-color: var(--primary);
-            color: white;
+            background-color: var(--primary-light);
+            color: var(--text-dark);
             padding: var(--spacing-xl) 0;
             position: relative;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
         }
 
         .page-header::after {
@@ -161,13 +165,14 @@
         .page-header h1 {
             font-size: 3rem;
             margin-bottom: var(--spacing-md);
-            color: white;
+            color: var(--text-dark);
         }
 
         .page-header p {
             font-size: 1.2rem;
             max-width: 800px;
             margin-bottom: 0;
+            color: var(--text-secondary);
         }
 
         /* About Section */
@@ -183,7 +188,7 @@
         }
 
         .about-content h2 {
-            color: var(--primary);
+            color: var(--secondary);
             font-size: 2.5rem;
             margin-bottom: var(--spacing-md);
         }
@@ -201,7 +206,7 @@
 
         /* Mission Vision Section */
         .mission-vision {
-            background-color: white;
+            background-color: var(--primary-light);
             padding: var(--spacing-xl) 0;
         }
 
@@ -214,18 +219,10 @@
         .mission-card, .vision-card {
             padding: var(--spacing-lg);
             border-radius: var(--border-radius);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             height: 100%;
-        }
-
-        .mission-card {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .vision-card {
             background-color: var(--light);
-            border: 2px solid var(--primary);
+            border-left: 5px solid var(--primary);
         }
 
         .mission-card h3, .vision-card h3 {
@@ -234,7 +231,7 @@
         }
 
         .mission-card h3 {
-            color: white;
+            color: var(--secondary);
         }
 
         .vision-card h3 {
@@ -249,6 +246,7 @@
         /* Core Values Section */
         .values-section {
             padding: var(--spacing-xl) 0;
+            background-color: var(--light);
         }
 
         .section-header {
@@ -274,34 +272,25 @@
         }
 
         .value-card {
-            background-color: white;
+            background-color: var(--light);
             padding: var(--spacing-lg);
             border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             text-align: center;
-            transition: all 0.3s ease;
-            border-top: 3px solid var(--primary);
-        }
-
-        .value-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-left: 5px solid var(--primary);
         }
 
         .value-icon {
             width: 70px;
             height: 70px;
-            background-color: rgba(53, 50, 167, 0.1);
+            background-color: var(--primary-light);
+            color: var(--secondary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto var(--spacing-md);
-        }
-
-        .value-icon i {
-            font-size: 2rem;
-            color: var(--primary);
+            font-size: 1.5rem;
         }
 
         .value-card h3 {
@@ -311,7 +300,7 @@
 
         /* Team Section */
         .team-section {
-            background-color: white;
+            background-color: var(--primary-light);
             padding: var(--spacing-xl) 0;
         }
 
@@ -322,12 +311,11 @@
         }
 
         .team-card {
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-5px);
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary);
         }
 
         .team-image {
@@ -336,7 +324,6 @@
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto var(--spacing-md);
-            border: 3px solid var(--primary);
         }
 
         .team-image img {
@@ -364,20 +351,21 @@
         }
 
         .team-social a {
-            width: 35px;
-            height: 35px;
-            background-color: rgba(53, 50, 167, 0.1);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: var(--light);
+            color: var(--primary);
+            border-radius: 50%;
+            margin-right: 8px;
             transition: all 0.3s ease;
         }
 
         .team-social a:hover {
             background-color: var(--primary);
-            color: white;
+            color: var(--light);
         }
 
         /* Journey Timeline */
@@ -405,22 +393,13 @@
         }
 
         .timeline-item {
-            padding: 10px 40px;
+            padding: var(--spacing-lg);
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border: 4px solid var(--primary);
-            border-radius: 50%;
-            top: 15px;
-            z-index: 1;
+            margin-bottom: var(--spacing-lg);
+            border-left: 5px solid var(--primary);
         }
 
         .timeline-left {
@@ -441,16 +420,16 @@
 
         .timeline-content {
             padding: var(--spacing-md);
-            background-color: white;
+            background-color: var(--light);
             border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .timeline-year {
             display: inline-block;
             padding: 5px 15px;
             background-color: var(--primary);
-            color: white;
+            color: var(--light);
             border-radius: 20px;
             font-weight: 600;
             margin-bottom: var(--spacing-sm);
@@ -462,19 +441,18 @@
         }
 
         /* CTA */
-        .cta {
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
+        .cta-section {
+            background-color: var(--primary-light);
             padding: var(--spacing-xl) 0;
+            text-align: center;
         }
 
-        .cta h2 {
-            color: white;
+        .cta-section h2 {
+            color: var(--text-dark);
             margin-bottom: var(--spacing-md);
         }
 
-        .cta p {
+        .cta-section p {
             margin-bottom: var(--spacing-lg);
             font-size: 1.2rem;
             max-width: 800px;
@@ -482,21 +460,21 @@
             margin-right: auto;
         }
 
-        .cta .btn {
-            background-color: white;
-            color: var(--primary);
+        .cta-section .btn {
+            background-color: var(--secondary);
+            color: var(--light);
         }
 
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: white;
+        .cta-section .btn:hover {
+            background-color: var(--primary);
+            color: var(--light);
         }
 
         /* Footer */
         .footer {
-            background-color: var(--dark);
-            color: var(--text-light);
-            padding: var(--spacing-lg) 0;
+            background-color: var(--light);
+            color: var(--text-dark);
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
         }
 
         .footer-grid {
@@ -511,12 +489,13 @@
         }
 
         .footer-logo img {
-            height: 50px;
+            height: 40px;
         }
 
         .footer h3 {
-            color: white;
+            color: var(--text-dark);
             margin-bottom: var(--spacing-md);
+            font-size: 1.2rem;
         }
 
         .footer-links {
@@ -528,21 +507,19 @@
         }
 
         .footer-links a {
-            color: var(--text-light);
-            opacity: 0.8;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
         }
 
         .footer-links a:hover {
-            opacity: 1;
             color: var(--primary);
         }
 
         .copyright {
-            margin-top: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
             padding-top: var(--spacing-md);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            opacity: 0.8;
+            border-top: 1px solid var(--primary-light);
+            color: var(--text-dark);
         }
 
         /* Social Media Icons */
@@ -553,23 +530,25 @@
         }
 
         .social-icon {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            width: 36px;
+            height: 36px;
+            background-color: var(--light);
+            color: var(--primary) !important;
             border-radius: 50%;
+            margin-right: 10px;
             transition: all 0.3s ease;
         }
 
         .social-icon:hover {
             background-color: var(--primary);
-            transform: translateY(-3px);
+            color: var(--light) !important;
         }
 
         .social-icon i {
-            color: white;
+            color: var(--primary) !important;
             font-size: 1.2rem;
         }
 
@@ -596,15 +575,15 @@
         .mobile-menu {
             position: fixed;
             top: 0;
-            right: -300px;
-            width: 300px;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
             height: 100vh;
-            background-color: white;
-            z-index: 1000;
+            background-color: var(--light);
+            z-index: 1001;
+            padding: var(--spacing-xl) var(--spacing-md);
+            transition: all 0.3s ease;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-            transition: right 0.3s ease;
-            padding: 80px 30px 30px;
-            overflow-y: auto;
         }
 
         .mobile-menu.active {
@@ -996,7 +975,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta section">
+    <section class="cta-section">
         <div class="container">
             <h2>Ready to Transform Your Business with Masna AI?</h2>
             <p>Join the growing number of forward-thinking organizations leveraging our agentic AI solutions to drive efficiency, innovation, and growth.</p>
@@ -1010,7 +989,7 @@
             <div class="footer-grid">
                 <div>
                     <a href="index.html" class="footer-logo">
-                        <img src="assets/logo_white.png" alt="Masna AI Logo">
+                        <img src="assets/logo_black.png" alt="Masna AI Logo">
                     </a>
                     <p>Leading provider of agentic AI solutions in the Middle East, transforming businesses through intelligent automation.</p>
                     <div class="social-icons">
